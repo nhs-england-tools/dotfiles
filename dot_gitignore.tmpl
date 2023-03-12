@@ -1,0 +1,3 @@
+{{ if eq .chezmoi.os "darwin" }}{{ include ".gitignore.macos" }}{{ end }}
+{{ if eq .chezmoi.os "linux" }}{{ include ".gitignore.linux" }}{{ end }}
+{{ if eq .chezmoi.os "windows" }}{{ include ".gitignore.windows" }}{{ end }}
