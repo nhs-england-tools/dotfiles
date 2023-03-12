@@ -21,7 +21,8 @@ sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply $GITHUB_ORG
 
 ## Features
 
-- `.gitignore` OS-specific files
+- OS-specific `.gitignore` rules
+- Common `.gitattributes` rules
 - Cross-platform support for macOS, Linux and Windows
 
 ## Licence
