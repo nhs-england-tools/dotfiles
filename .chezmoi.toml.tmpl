@@ -1,0 +1,8 @@
+# {{- $name := promptString "Git user name for the author/committer" }}
+# {{- $email := promptString "Git user email for the author/committer" }}
+# {{- $signingkey := promptString "Git user signing key for the author/committer" }}
+
+[data]
+  name = "{{ $name }}"
+  email = "{{ $email }}"
+  signingkey = "{{ $signingkey }}"

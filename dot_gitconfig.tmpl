@@ -1,0 +1,9 @@
+[core]
+  attributesfile = ~/.gitattributes
+  excludesfile = ~/.gitignore
+[commit]
+	gpgsign = true
+[user]
+	email = "{{ .email }}"
+	name = "{{ .name }}"
+	signingkey = "{{ .signingkey }}"
