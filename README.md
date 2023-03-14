@@ -101,7 +101,7 @@ More than a decade old [mathiasbynens/dotfiles](https://github.com/mathiasbynens
 
 ## Licence
 
-> The [LICENCE](./LICENCE) file will need to be updated with the correct year and owner
+> The [LICENCE.md](./LICENCE.md) file will need to be updated with the correct year and owner
 
 Unless stated otherwise, the codebase is released under the MIT License. This covers both the codebase and any sample code in the documentation.
 
