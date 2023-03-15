@@ -122,6 +122,8 @@ The following files are managed by this dotilfes project
 └─── .gitignore
 ```
 
+Some mechanisms like installation of packages do not follow the declarative approach and use imperative scripts to apply changes. However, they are written in an idempotent way and run only when a change is detected.
+
 ### Project configuration
 
 This project can be customised and extended by creating a personal repository for then to be keep building on top of it.
@@ -130,8 +132,10 @@ This project can be customised and extended by creating a personal repository fo
 
 ### Currently supported features
 
-- Cross-platform support for GitHub Codespaces, macOS, Ubutnu, Windows WSL and Alpine Docker for CI/CD
+- Cross-platform support for GitHub Codespaces, macOS, Ubutnu and Windows WSL
 - File content templating for user customisation
+- [GNU-compatible CLI tools](https://en.wikipedia.org/wiki/List_of_GNU_packages) to provide consistent experience for macOS users
+- [Oh My Zsh](https://ohmyz.sh/) for managing shell configuration
 - Git
   - Commit signing configuration
   - Essential `.gitconfig` setup
