@@ -14,11 +14,11 @@ Here is _[Your unofficial guide to dotfiles on GitHub](https://dotfiles.github.i
     - [Archive your current dotfiles configuration](#archive-your-current-dotfiles-configuration)
     - [Apply new configuration from this repository](#apply-new-configuration-from-this-repository)
   - [Usage](#usage)
-    - [Common flow to add and track a new file](#common-flow-to-add-and-track-a-new-file)
-    - [Store changes in your own GitHub repository](#store-changes-in-your-own-github-repository)
+    - [Add and track a new file](#add-and-track-a-new-file)
+    - [Store changes in your own repository](#store-changes-in-your-own-repository)
   - [Architecture](#architecture)
-    - [Diagrams](#diagrams)
-    - [Configuration](#configuration)
+    - [Project structure](#project-structure)
+    - [Project configuration](#project-configuration)
   - [Contributing](#contributing)
     - [Currently supported features](#currently-supported-features)
     - [Resources](#resources)
@@ -39,15 +39,32 @@ chezmoi archive --output=/tmp/dotfiles.tar.gz
 
 ### Apply new configuration from this repository
 
-The following instruction clones [\$GITHUB_ORG/dotfiles](https://github.com/make-ops-tools/dotfiles) repository into the `~/.local/share/chezmoi` directory and next, applies changes accordingly to your home directory `~/`. During the setup it prompts you to provide configuration options like Git committer name and email address, etc.
+The following instruction clones [\$GITHUB_ORG/dotfiles](https://github.com/make-ops-tools/dotfiles) repository into the `~/.local/share/chezmoi/` directory and next applies changes accordingly, to your home directory `~/`. During the setup it prompts you to provide configuration options like Git committer name and email address, etc.
 
 ```shell
 chezmoi init --apply $GITHUB_ORG # "make-ops-tools"
 ```
 
+Installation flow diagram
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant home directory
+  participant working copy
+  participant local repo
+  participant remote repo
+  Note over home directory: archive current files
+  remote repo->>local repo: chezmoi init --apply  <repo>
+  Note left of local repo: prompt for configuration
+  local repo->>home directory: chezmoi init --apply  <repo>
+```
+
 ## Usage
 
-### Common flow to add and track a new file
+### Add and track a new file
+
+If you decide to extend the configuration of your dotfiles and include an additional file to be managed, here is an example on how to do that.
 
 ```shell
 chezmoi add ~/.bashrc
@@ -57,11 +74,12 @@ chezmoi apply -v
 chezmoi cd
 git add .
 git commit -S -m "Add .bashrc"
+exit
 ```
 
-### Store changes in your own GitHub repository
+### Store changes in your own repository
 
-First, create a [new dotfiles repository](https://github.com/new), then add the remote origin to it and push your preferred changes. By doing so, it will give you better experience and more customisation options to extend the functionality making it your own.
+You may want to create a [new dotfiles repository](https://github.com/new) for then to add the remote origin to to your local copy and push the preferred changes. By doing so, it will give you better experience and more customisation options to extend the functionality making it your own.
 
 ```shell
 git remote add origin https://github.com/$YOUR_GITHUB_USERNAME/dotfiles.git
@@ -69,15 +87,44 @@ git branch -M main
 git push -u origin main
 ```
 
+Usage flow diagram
+
+```mermaid
+sequenceDiagram
+  participant home directory
+  participant working copy
+  participant local repo
+  participant your remote repo
+  home directory->>local repo: chezmoi init
+  home directory->>working copy: chezmoi add <file>
+  working copy->>working copy: chezmoi edit <file>
+  working copy-->>home directory: chezmoi diff
+  working copy->>home directory: chezmoi apply
+  home directory-->>working copy: chezmoi cd
+  working copy->>local repo: git add
+  working copy->>local repo: git commit
+  local repo->>local repo: git remote add origin<br/>git branch
+  local repo->>your remote repo: git push
+  working copy-->>home directory: exit
+```
+
 ## Architecture
 
-### Diagrams
+### Project structure
 
-**TODO**: _The C4 model is a simple and intuitive way to create software architecture diagrams that are clear, consistent, scalable and most importantly collaborative. This should result in documenting all the system interfaces, external dependencies and integration points._
+The following files are managed by this dotilfes project
 
-### Configuration
+```shell
+~ ($HOME)
+│
+├─── .gitattribute
+├─── .gitconfig
+└─── .gitignore
+```
 
-**TODO**: _Most of the projects are built with customisability and extendability in mind. At a minimum, this can be achieved by implementing a service level configuration options and settings. The intention of this section is to show how this can be used. If the system processes data, you could mention here for example how the input is prepared for testing - anonymised, synthetic or live data._
+### Project configuration
+
+This project can be customised and extended by creating a personal repository for then to be keep building on top of it.
 
 ## Contributing
 
@@ -86,7 +133,7 @@ git push -u origin main
 - Cross-platform support for GitHub Codespaces, macOS, Ubutnu, Windows WSL and Alpine Docker for CI/CD
 - File content templating for user customisation
 - Git
-  - Commit signing
+  - Commit signing configuration
   - Essential `.gitconfig` setup
   - OS-specific `.gitignore` rules
   - Common `.gitattributes` rules
