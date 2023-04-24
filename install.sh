@@ -1,68 +1,133 @@
-#!/bin/sh
+#!/bin/sh -e
 
-# -e: exit on error
-# -u: exit on unset variables
-set -eu
+# Project installation script
+#
+# Usage:
+#   $ [options] /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/make-ops-tools/dotfiles/main/install.sh)"
+#
+# Options:
+#   BRANCH_NAME=other-branch-than-main      # Default is `main`
+#   INSTALL_DIR=other-dir-than-install-dir  # Default is `~/.local/share/chezmoi`
+#   CLONE_REPO=false                        # Default is `true`
+#   VERBOSE=true                            # Default is `false`
 
-log_color() {
-  color_code="$1"
-  shift
+# ==============================================================================
 
-  printf "\033[${color_code}m%s\033[0m\n" "$*" >&2
+SCRIPT_DIR=$([ -n "${BASH_SOURCE[0]}" ] && cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &> /dev/null && pwd || dirname "$(readlink -f "$0")")
+
+ORG_NAME=${ORG_NAME:-${USER_NAME:-"make-ops-tools"}}
+REPO_NAME=${REPO_NAME:-"dotfiles"}
+PROJECT_NAME=$ORG_NAME-$REPO_NAME
+
+BRANCH_NAME=${BRANCH_NAME:-"main"}
+INSTALL_DIR=${INSTALL_DIR:-"~/.local/share/chezmoi"}
+CLONE_REPO=${CLONE_REPO:-"true"}
+
+CMD_NAME=$REPO_NAME
+
+# ==============================================================================
+
+function main() {
+
+  cd $SCRIPT_DIR
+
+  clone || download
+  check && install
+  finish
 }
 
-log_red() {
-  log_color "0;31" "$@"
-}
+function clone() {
 
-log_blue() {
-  log_color "0;34" "$@"
-}
-
-log_task() {
-  log_blue "🔃" "$@"
-}
-
-log_error() {
-  log_red "❌" "$@"
-}
-
-error() {
-  log_error "$@"
-  exit 1
-}
-
-if ! chezmoi="$(command -v chezmoi)"; then
-  bin_dir="${HOME}/.local/bin"
-  chezmoi="${bin_dir}/chezmoi"
-  log_task "Installing chezmoi to '${chezmoi}'"
-  if command -v curl >/dev/null; then
-    chezmoi_install_script="$(curl -fsSL https://get.chezmoi.io)"
-  elif command -v wget >/dev/null; then
-    chezmoi_install_script="$(wget -qO- https://get.chezmoi.io)"
-  else
-    error "To install chezmoi, you must have curl or wget."
+  if (is_arg_false "$CLONE_REPO" || ! is_arg_true "$CLONE_REPO") then
+    return 1
   fi
-  sh -c "${chezmoi_install_script}" -- -b "${bin_dir}"
-  unset chezmoi_install_script bin_dir
-fi
 
-# POSIX way to get script's dir: https://stackoverflow.com/a/29834779/12156188
-# shellcheck disable=SC2312
-script_dir="$(cd -P -- "$(dirname -- "$(command -v -- "$0")")" && pwd -P)"
+  if ! [ -d "$INSTALL_DIR/.git" ]; then
+    mkdir -p "$INSTALL_DIR"
+    cd "$INSTALL_DIR"
+    git clone https://github.com/$ORG_NAME/$REPO_NAME.git .
+  else
+    cd "$INSTALL_DIR"
+    git pull --all
+  fi
+  git checkout "$BRANCH_NAME"
+}
 
-set -- init --source="${script_dir}" --verbose=false
+function download() {
 
-if [ -n "${DOTFILES_ONE_SHOT-}" ]; then
-  set -- "$@" --one-shot
-else
-  set -- "$@" --apply
-fi
+  curl -L \
+    "https://github.com/$ORG_NAME/$REPO_NAME/tarball/$BRANCH_NAME?$(date +%s)" \
+    -o /tmp/$PROJECT_NAME.tar.gz
+  tar -zxf /tmp/$PROJECT_NAME.tar.gz -C /tmp
+  rm -rf /tmp/$PROJECT_NAME.tar.gz
+  rm -rf $INSTALL_DIR
+  mkdir -p $(dirname $INSTALL_DIR)
+  mv /tmp/$PROJECT_NAME-* "$INSTALL_DIR"
+  cd "$INSTALL_DIR"
+}
 
-if [ -n "${DOTFILES_DEBUG-}" ]; then
-  set -- "$@" --debug
-fi
+# ==============================================================================
 
-log_task "Running 'chezmoi $*'"
-# replace current process with chezmoi
-exec "${chezmoi}" "$@"
+function check() {
+
+  present=$(tput setaf 64; printf present;tput sgr0)
+  missing=$(tput setaf 196; printf missing;tput sgr0)
+
+  printf "Prerequisites:\n"
+
+  # Check bash
+  [ -x /bin/bash ] && value=$present || value=$missing
+  printf "bash [%s]\n" "$value"
+  # Check git
+  which git > /dev/null 2>&1 && value=$present || value=$missing
+  printf "git [%s]\n" "$value"
+  # Check make
+  (make --version 2> /dev/null | grep -i "gnu make" | grep -Eq '[4]\.[0-9]+') && value=$present || value=$missing
+  printf "make [%s]\n" "$value"
+  # Check docker
+  which docker > /dev/null 2>&1 && value=$present || value=$missing
+  printf "docker [%s]\n" "$value"
+  # Check chezmoi
+  which chezmoi > /dev/null 2>&1 && value=$present || value=$missing
+  printf "chezmoi [%s]\n" "$value"
+}
+
+function install() {
+
+  mkdir -p ~/bin
+  ln -sf \
+    $INSTALL_DIR/scripts/$CMD_NAME.sh \
+    ~/bin/$CMD_NAME
+}
+
+function finish() {
+
+  printf "Project directory %s\n" "$INSTALL_DIR"
+  printf "Executable %s\n" "~/bin/$CMD_NAME"
+  printf "Add to your PATH the ~/bin directory, i.e. PATH=\"~/bin:\$PATH\"\n"
+}
+
+# ==============================================================================
+
+function is_arg_true() {
+
+  if [[ "$1" =~ ^(true|yes|y|on|1|TRUE|YES|Y|ON)$ ]]; then
+    return 0
+  else
+    return 1
+  fi
+}
+
+function is_arg_false() {
+
+  if [[ "$1" =~ ^(false|no|n|off|0|FALSE|NO|N|OFF)$ ]]; then
+    return 0
+  else
+    return 1
+  fi
+}
+
+# ==============================================================================
+
+is_arg_true "$VERBOSE" && set -x
+main
