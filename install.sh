@@ -106,7 +106,12 @@ function finish() {
 
   printf "Project directory %s\n" "$INSTALL_DIR"
   printf "Executable %s\n" "~/bin/$CMD_NAME"
-  printf "Add to your PATH the ~/bin directory, i.e. PATH=\"~/bin:\$PATH\"\n"
+
+  if ! echo $PATH | grep -q '~/bin'; then
+    tput setaf 228
+    printf "\nAdd to your PATH the ~/bin directory, i.e. PATH=\"~/bin:\$PATH\"\n"
+    tput sgr0
+  fi
 }
 
 # ==============================================================================
