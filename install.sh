@@ -73,7 +73,7 @@ function check() {
   present=$(tput setaf 64; printf present;tput sgr0)
   missing=$(tput setaf 196; printf missing;tput sgr0)
 
-  printf "Prerequisites:\n"
+  printf "\nPrerequisites:\n"
 
   # Check bash
   [ -x /bin/bash ] && value=$present || value=$missing
@@ -90,6 +90,8 @@ function check() {
   # Check chezmoi
   which chezmoi > /dev/null 2>&1 && value=$present || value=$missing
   printf "chezmoi [%s]\n" "$value"
+
+  printf "\n"
 }
 
 function install() {
