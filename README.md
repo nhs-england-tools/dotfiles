@@ -12,7 +12,8 @@ Here is _[Your unofficial guide to dotfiles on GitHub](https://dotfiles.github.i
   - [Table of Contents](#table-of-contents)
   - [Installation](#installation)
     - [Archive your current dotfiles configuration](#archive-your-current-dotfiles-configuration)
-    - [Apply new configuration from this repository](#apply-new-configuration-from-this-repository)
+    - [Apply new configuration via `chezmoi`](#apply-new-configuration-via-chezmoi)
+    - [Use the installation script from this repository](#use-the-installation-script-from-this-repository)
   - [Usage](#usage)
     - [Add and track a new file](#add-and-track-a-new-file)
     - [Store changes in your own repository](#store-changes-in-your-own-repository)
@@ -37,12 +38,20 @@ Prior to applying any changes to your home directory, create a backup of your cu
 chezmoi archive --output=/tmp/dotfiles.tar.gz
 ```
 
-### Apply new configuration from this repository
+### Apply new configuration via `chezmoi`
 
 The following instruction clones [\$GITHUB_ORG/dotfiles](https://github.com/make-ops-tools/dotfiles) repository into the `~/.local/share/chezmoi/` directory and next applies changes accordingly, to your home directory `~/`. During the setup it prompts you to provide configuration options like Git committer name and email address, etc.
 
 ```shell
 chezmoi init --apply $GITHUB_ORG # "make-ops-tools"
+```
+
+### Use the installation script from this repository
+
+You can use the convenience script to install the dotfiles on any machine with a single command. Simply run the following in your terminal
+
+```shell
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/make-ops-tools/dotfiles/main/install.sh)"
 ```
 
 Installation flow diagram

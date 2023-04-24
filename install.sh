@@ -20,8 +20,8 @@ REPO_NAME=${REPO_NAME:-"dotfiles"}
 PROJECT_NAME=$ORG_NAME-$REPO_NAME
 
 BRANCH_NAME=${BRANCH_NAME:-"main"}
-INSTALL_DIR=${INSTALL_DIR:-"~/.local/share/chezmoi"}
-CLONE_REPO=${CLONE_REPO:-"true"}
+INSTALL_DIR=${INSTALL_DIR:-~/.local/share/chezmoi}
+CLONE_REPO=${CLONE_REPO:-true}
 
 CMD_NAME=$REPO_NAME
 
