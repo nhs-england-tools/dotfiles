@@ -14,6 +14,7 @@ Here is _[Your unofficial guide to dotfiles on GitHub](https://dotfiles.github.i
     - [Archive your current dotfiles configuration](#archive-your-current-dotfiles-configuration)
     - [Apply new configuration via `chezmoi`](#apply-new-configuration-via-chezmoi)
     - [Use the installation script from this repository](#use-the-installation-script-from-this-repository)
+    - [Prerequisites](#prerequisites)
   - [Usage](#usage)
     - [Add and track a new file](#add-and-track-a-new-file)
     - [Store changes in your own repository](#store-changes-in-your-own-repository)
@@ -68,6 +69,10 @@ sequenceDiagram
   Note left of local repo: prompt for configuration
   local repo->>home directory: chezmoi init --apply  <repo>
 ```
+
+### Prerequisites
+
+- [Bitwarden CLI](https://bitwarden.com/help/cli/)
 
 ## Usage
 

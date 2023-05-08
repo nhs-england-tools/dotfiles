@@ -1,8 +1,4 @@
-# {{- $name := promptString "Git user name for the author/committer" }}
-# {{- $email := promptString "Git user email for the author/committer" }}
-# {{- $signingkey := promptString "Git user signing key for the author/committer" }}
-
 [data]
-  name = "{{ $name }}"
-  email = "{{ $email }}"
-  signingkey = "{{ $signingkey }}"
+  dotfiles.name = "{{ (bitwarden "item" "dotfiles").identity.firstName }} {{ (bitwarden "item" "dotfiles").identity.lastName }}"
+  dotfiles.email = "{{ (bitwarden "item" "dotfiles").identity.email }}"
+  dotfiles.git_signingkey = "{{ (bitwardenFields "item" "dotfiles").git_signingkey.value }}"

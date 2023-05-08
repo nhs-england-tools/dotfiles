@@ -4,6 +4,6 @@
 [commit]
 	gpgsign = true
 [user]
-	email = "{{ .email }}"
-	name = "{{ .name }}"
-	signingkey = "{{ .signingkey }}"
+	email = "{{ .dotfiles.email }}"
+	name = "{{ .dotfiles.name }}"
+	signingkey = "{{ .dotfiles.git_signingkey }}"
