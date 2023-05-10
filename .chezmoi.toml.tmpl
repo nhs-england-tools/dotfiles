@@ -1,4 +1,18 @@
+{{- $name := "" -}}
+{{- $email := "" -}}
+{{- $signingKey := "" -}}
+{{- if lookPath "bw" -}}
+{{-   $dotfiles := (bitwarden "item" "dotfiles") -}}
+{{-   $name = (print $dotfiles.identity.firstName " " $dotfiles.identity.lastName) -}}
+{{-   $email = $dotfiles.identity.email }}
+{{-   $signingKey = (bitwardenFields "item" "dotfiles").git_signingkey.value -}}
+{{- else -}}
+{{-   $name = promptStringOnce . "dotfiles.name" "Git user name for the author/committer" -}}
+{{-   $email = promptStringOnce . "dotfiles.email" "Git user email for the author/committer" -}}
+{{-   $signingKey = promptStringOnce . "dotfiles.git_signingkey" "Git user signing key for the author/committer" -}}
+{{- end -}}
+
 [data]
-  dotfiles.name = "{{ (bitwarden "item" "dotfiles").identity.firstName }} {{ (bitwarden "item" "dotfiles").identity.lastName }}"
-  dotfiles.email = "{{ (bitwarden "item" "dotfiles").identity.email }}"
-  dotfiles.git_signingkey = "{{ (bitwardenFields "item" "dotfiles").git_signingkey.value }}"
+  dotfiles.name = {{ $name | quote }}
+  dotfiles.email = {{ $email | quote }}
+  dotfiles.git_signingkey = {{ $signingKey | quote }}
