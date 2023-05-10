@@ -2,8 +2,8 @@
   {{ include "./assets/.gitignore.macos" }}
 {{ else if eq .chezmoi.os "linux" }}
   {{ if (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
-    {{ include "./assets.gitignore.windows" }}
+    {{ include "./assets/.gitignore.windows" }}
   {{ else }}
-    {{ include "./assets.gitignore.linux" }}
+    {{ include "./assets/.gitignore.linux" }}
   {{ end }}
 {{ end }}
