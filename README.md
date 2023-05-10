@@ -52,7 +52,7 @@ chezmoi init --apply $GITHUB_ORG # "make-ops-tools"
 You can use the convenience script to install the dotfiles on any machine with a single command. Simply run the following in your terminal
 
 ```shell
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/make-ops-tools/dotfiles/main/install.sh)"
+sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply $GITHUB_ORG # "make-ops-tools"
 ```
 
 Installation flow diagram

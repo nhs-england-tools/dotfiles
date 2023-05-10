@@ -4,7 +4,7 @@
 {{- if lookPath "bw" -}}
 {{-   $dotfiles := (bitwarden "item" "dotfiles") -}}
 {{-   $name = (print $dotfiles.identity.firstName " " $dotfiles.identity.lastName) -}}
-{{-   $email = $dotfiles.identity.email }}
+{{-   $email = $dotfiles.identity.email -}}
 {{-   $signingKey = (bitwardenFields "item" "dotfiles").git_signingkey.value -}}
 {{- else -}}
 {{-   $name = promptStringOnce . "dotfiles.name" "Git user name for the author/committer" -}}

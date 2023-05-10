@@ -2,8 +2,8 @@
   attributesfile = ~/.gitattributes
   excludesfile = ~/.gitignore
 [commit]
-	gpgsign = true
+  gpgsign = true
 [user]
-	email = "{{ .dotfiles.email }}"
-	name = "{{ .dotfiles.name }}"
-	signingkey = "{{ .dotfiles.git_signingkey }}"
+  email = {{ .dotfiles.email | quote }}
+  name = {{ .dotfiles.name | quote }}
+  signingkey = {{ .dotfiles.git_signingkey | quote }}

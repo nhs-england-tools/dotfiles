@@ -33,6 +33,7 @@
     watch \
     wdiff \
     wget \
+    xq \
     xz \
     yq \
     zip \
