@@ -1,3 +1,9 @@
-{{ if eq .chezmoi.os "darwin" }}{{ include "./assets/.gitignore.macos" }}{{ end }}
-{{ if eq .chezmoi.os "linux" }}{{ include "./assets.gitignore.linux" }}{{ end }}
-{{ if eq .chezmoi.os "windows" }}{{ include "./assets.gitignore.windows" }}{{ end }}
+{{ if eq .chezmoi.os "darwin" -}}
+  {{ include "./assets/.gitignore.macos" }}
+{{ else if eq .chezmoi.os "linux" }}
+  {{ if (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
+    {{ include "./assets.gitignore.windows" }}
+  {{ else }}
+    {{ include "./assets.gitignore.linux" }}
+  {{ end }}
+{{ end }}
