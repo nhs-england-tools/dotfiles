@@ -1,4 +1,4 @@
-# Dotfiles
+# Make Ops Tools - Dotfiles
 
 [![CI/CD Pipeline](https://github.com/make-ops-tools/dotfiles/actions/workflows/cicd-pipeline.yaml/badge.svg)](https://github.com/make-ops-tools/dotfiles/actions/workflows/cicd-pipeline.yaml)
 
@@ -10,7 +10,7 @@ Here is _[Your unofficial guide to dotfiles on GitHub](https://dotfiles.github.i
 
 ## Table of Contents
 
-- [Dotfiles](#dotfiles)
+- [Make Ops Tools - Dotfiles](#make-ops-tools---dotfiles)
   - [Table of Contents](#table-of-contents)
   - [Installation](#installation)
     - [Archive your current dotfiles configuration](#archive-your-current-dotfiles-configuration)
