@@ -23,9 +23,21 @@
 
 # ==============================================================================
 
+function is_arg_true() {
+
+  if [[ "$1" =~ ^(true|yes|y|on|1|TRUE|YES|Y|ON)$ ]]; then
+    return 0
+  else
+    return 1
+  fi
+}
+
+# ==============================================================================
+
+is_arg_true "$VERBOSE" && set -x
 image_digest=3e42db866de0fc813f74450f1065eab9066607fed34eb119d0db6f4e640e6b8d # v0.34.0
 
-if [[ "$ALL_FILES" =~ ^(true|yes|y|on|1|TRUE|YES|Y|ON)$ ]]; then
+if is_arg_true "$ALL_FILES"; then
 
   docker run --rm --platform linux/amd64 \
     --volume=$PWD:/workdir \
