@@ -48,7 +48,7 @@ if is_arg_true "$ALL_FILES"; then
 else
 
   changed_files=$(git diff --diff-filter=ACMRT --name-only ${BRANCH_NAME:-origin/main})
-  while read file; do
+  [ -n "$changed_files" ] && while read file; do
     docker run --rm --platform linux/amd64 \
       --volume=$PWD:/check \
       mstruebing/editorconfig-checker@sha256:$image_digest \
