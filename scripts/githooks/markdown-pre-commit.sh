@@ -1,4 +1,6 @@
-#!/bin/bash -e
+#!/bin/bash
+
+set -e
 
 # Pre-commit git hook to check the Markdown rules complience over changed
 # files.
@@ -9,6 +11,7 @@
 # Options:
 #   BRANCH_NAME=other-branch-than-main  # Branch to compare with, default is `origin/main`
 #   ALL_FILES=true                      # Check all files, default is `false`
+#   VERBOSE=true                        # Show all the executed commands, default is `false`
 #
 # Exit codes:
 #   0 - All files are formatted correctly
@@ -23,6 +26,36 @@
 
 # ==============================================================================
 
+image_digest=3e42db866de0fc813f74450f1065eab9066607fed34eb119d0db6f4e640e6b8d # v0.34.0
+
+# ==============================================================================
+
+function main() {
+
+  if is_arg_true "$ALL_FILES"; then
+
+    # Check all files
+    docker run --rm --platform linux/amd64 \
+      --volume=$PWD:/workdir \
+      ghcr.io/igorshubovych/markdownlint-cli@sha256:$image_digest \
+        "*.md" \
+        --disable MD013 MD033
+
+  else
+
+    # Check changed files only
+    changed_files=$(git diff --diff-filter=ACMRT --name-only ${BRANCH_NAME:-origin/main} "*.md")
+    if [ -n "$changed_files" ]; then
+      docker run --rm --platform linux/amd64 \
+        --volume=$PWD:/workdir \
+        ghcr.io/igorshubovych/markdownlint-cli@sha256:$image_digest \
+          $changed_files \
+          --disable MD013 MD033
+    fi
+
+  fi
+}
+
 function is_arg_true() {
 
   if [[ "$1" =~ ^(true|yes|y|on|1|TRUE|YES|Y|ON)$ ]]; then
@@ -35,27 +68,7 @@ function is_arg_true() {
 # ==============================================================================
 
 is_arg_true "$VERBOSE" && set -x
-image_digest=3e42db866de0fc813f74450f1065eab9066607fed34eb119d0db6f4e640e6b8d # v0.34.0
 
-if is_arg_true "$ALL_FILES"; then
-
-  docker run --rm --platform linux/amd64 \
-    --volume=$PWD:/workdir \
-    ghcr.io/igorshubovych/markdownlint-cli@sha256:$image_digest \
-      "*.md" \
-      --disable MD013 MD033
-
-else
-
-  changed_files=$(git diff --diff-filter=ACMRT --name-only ${BRANCH_NAME:-origin/main} "*.md")
-  if [ -n "$changed_files" ]; then
-    docker run --rm --platform linux/amd64 \
-      --volume=$PWD:/workdir \
-      ghcr.io/igorshubovych/markdownlint-cli@sha256:$image_digest \
-        $changed_files \
-        --disable MD013 MD033
-  fi
-
-fi
+main $*
 
 exit 0
