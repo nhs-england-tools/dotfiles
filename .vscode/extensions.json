@@ -1,6 +1,5 @@
 {
   "recommendations": [
-    "ban.spellright",
     "davidanson.vscode-markdownlint",
     "donjayamanne.githistory",
     "eamodio.gitlens",
@@ -15,7 +14,7 @@
     "johnpapa.vscode-peacock",
     "mhutchie.git-graph",
     "ms-azuretools.vscode-docker",
-    "streetsidesoftware.code-spell-checker",
+    "streetsidesoftware.code-spell-checker-british-english",
     "tomoki1207.pdf",
     "vscode-icons-team.vscode-icons",
     "vstirbu.vscode-mermaid-preview",
