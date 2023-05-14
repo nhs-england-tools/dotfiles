@@ -4,6 +4,12 @@ githooks-install: # Install git hooks configured in this repository
 	echo "./scripts/githooks/pre-commit" > .git/hooks/pre-commit
 	chmod +x .git/hooks/pre-commit
 
+update-lib-detect-os: # Update the Detect Operating System libarary from source
+	curl -fsLS \
+		https://raw.githubusercontent.com/make-ops-tools/detect-operating-system/main/scripts/detect-operating-system.sh \
+			> ./dot_local/bin/detect-operating-system.sh
+	chmod +x ./dot_local/bin/detect-operating-system.sh
+
 # ==============================================================================
 
 help: # List Makefile targets
@@ -34,4 +40,5 @@ endif
 
 .SILENT: \
 	config \
-	githooks-install
+	githooks-install \
+	update-lib-detect-os

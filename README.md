@@ -1,5 +1,7 @@
 # Dotfiles
 
+[![CI/CD Pipeline](https://github.com/make-ops-tools/dotfiles/actions/workflows/cicd-pipeline.yaml/badge.svg)](https://github.com/make-ops-tools/dotfiles/actions/workflows/cicd-pipeline.yaml)
+
 Dotfiles are configuration files on `*NIX` systems and are used to customise the behaviour and appearance of common applications, command-line tools and shell. They can contain various predefined settings, functions, aliases, environment variables and other configurations that affect how programs behave and interact with the system.
 
 The aim of such a setup is to ensure predictable and consistent behaviour across environments and workstations as well as to improve the engineering efficiency which results in better [Developer Experience (DX)](https://www.thoughtworks.com/en-gb/insights/blog/why-you-should-invest-good-developer-experience-today), allowing to implement mature developer workflows that integrate well with an [Internal Developer Platform (IDP)](https://www.thoughtworks.com/en-gb/insights/blog/devops/better-developer-platforms-key-better-digital-products).
