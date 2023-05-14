@@ -1,5 +1,7 @@
-install.sh
-LICENCE.md
-README.md
+assets
+docs
 scripts
+LICENCE.md
+Makefile
+README.md
 TODO.md
