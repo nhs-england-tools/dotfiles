@@ -1,0 +1,26 @@
+{
+  "recommendations": [
+    "ban.spellright",
+    "davidanson.vscode-markdownlint",
+    "donjayamanne.githistory",
+    "eamodio.gitlens",
+    "editorconfig.editorconfig",
+    "github.codespaces",
+    "github.copilot",
+    "github.github-vscode-theme",
+    "github.remotehub",
+    "github.vscode-github-actions",
+    "github.vscode-pull-request-github",
+    "hediet.vscode-drawio",
+    "johnpapa.vscode-peacock",
+    "mhutchie.git-graph",
+    "ms-azuretools.vscode-docker",
+    "streetsidesoftware.code-spell-checker",
+    "tomoki1207.pdf",
+    "vscode-icons-team.vscode-icons",
+    "vstirbu.vscode-mermaid-preview",
+    "yzhang.dictionary-completion",
+    "yzhang.markdown-all-in-one",
+  ],
+  "unwantedRecommendations": []
+}

@@ -1,4 +1,4 @@
-# dotfiles
+# Dotfiles
 
 Dotfiles are configuration files on `*NIX` systems and are used to customise the behaviour and appearance of common applications, command-line tools and shell. They can contain various predefined settings, functions, aliases, environment variables and other configurations that affect how programs behave and interact with the system.
 
@@ -8,7 +8,7 @@ Here is _[Your unofficial guide to dotfiles on GitHub](https://dotfiles.github.i
 
 ## Table of Contents
 
-- [dotfiles](#dotfiles)
+- [Dotfiles](#dotfiles)
   - [Table of Contents](#table-of-contents)
   - [Installation](#installation)
     - [Archive your current dotfiles configuration](#archive-your-current-dotfiles-configuration)
