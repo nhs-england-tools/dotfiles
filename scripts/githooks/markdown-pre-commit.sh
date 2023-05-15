@@ -46,7 +46,7 @@ function main() {
       ghcr.io/igorshubovych/markdownlint-cli@sha256:$image_digest \
         $files \
         --disable MD013 MD033
-  if
+  fi
 }
 
 function is_arg_true() {
