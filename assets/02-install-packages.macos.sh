@@ -2,7 +2,7 @@
 
 set -e
 
-# Install tools for consistent GNU/Linux-like CLI experience on macOS
+# Install packages for consistent GNU/Linux-like CLI experience on macOS
 brew install \
   ack \
   autoconf \

@@ -1,0 +1,51 @@
+# ==============================================================================
+# shell
+
+alias reload="exec $SHELL -l" # Reload shell
+
+# ==============================================================================
+# git
+
+alias g="git"
+alias ga="git add"
+alias gb+="git branch -vv --all"
+alias gb="git branch -vv"
+alias gbd="git branch -D"
+alias gc+="git commit --all --gpg-sign -m"
+alias gc="git commit --gpg-sign -m"
+alias gco="git checkout"
+alias gd+="git diff --cached"
+alias gd="git diff"
+alias gf="git fetch --prune"
+alias gl+="git log --graph --oneline --decorate --stat"
+alias gl="git log --graph --oneline --decorate"
+alias gm="git merge --no-ff"
+alias gp="git pull --prune"
+alias gpu+="git push --force-with-lease"
+alias gpu="git push"
+alias gpuo="git push --set-upstream origin"
+alias gr++="git reset --hard HEAD~1"
+alias gr+="git reset --hard HEAD"
+alias gr="git reset HEAD"
+alias gs="git status --short"
+
+# ==============================================================================
+# docker
+
+alias d="docker"
+alias dex="docker exec --interactive --tty"
+alias dim="docker images"
+alias dip="docker inspect --format '{{ .NetworkSettings.IPAddress }}'"
+alias dlo="docker logs --follow"
+alias dnl="docker network ls"
+alias dnr='docker network rm $(docker network ls --quiet --filter dangling=true) 2> /dev/null'
+alias dps="docker ps --all"
+alias drc='docker rm --volumes --force $(docker ps --all --quiet) 2> /dev/null'
+alias dri='docker rmi --force $(docker images | grep "<none>" | awk "{print $3}") 2> /dev/null'
+alias dvl="docker volume ls"
+alias dvr='docker volume rm $(docker volume ls --quiet --filter dangling=true) 2> /dev/null'
+
+# ==============================================================================
+# vscode
+
+alias c='code $(ls -1 *.code-workspace)'

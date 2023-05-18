@@ -5,3 +5,9 @@ LICENCE.md
 Makefile
 README.md
 TODO.md
+
+{{ if ne .chezmoi.os "darwin" }}
+.macos
+{{ else if ne .chezmoi.os "linux" }}
+.ubuntu
+{{ end }}

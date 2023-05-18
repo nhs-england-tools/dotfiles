@@ -1,11 +1,8 @@
-{{- $file := "" -}}
 {{- if eq .chezmoi.os "darwin" -}}
-{{-   $file = "./assets/.gitignore.macos" -}}
+{{-   include "./assets/.gitignore.macos" }}
 {{- else if eq .chezmoi.os "linux" -}}
+{{-   include "./assets/.gitignore.linux" }}
 {{-   if (.chezmoi.kernel.osrelease | lower | contains "microsoft") -}}
-{{-     $file = "./assets/.gitignore.windows" -}}
-{{-   else -}}
-{{-     $file = "./assets/.gitignore.linux" -}}
+{{-     include "./assets/.gitignore.windows" }}
 {{-   end -}}
 {{- end -}}
-{{- include $file -}}

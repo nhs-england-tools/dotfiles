@@ -1,14 +1,6 @@
 {
   "folders": [
     {
-      "name": "Make Ops Tools - Dotfiles - Assets",
-      "path": "./assets"
-    },
-    {
-      "name": "Make Ops Tools - Dotfiles - Local",
-      "path": "./dot_local"
-    },
-    {
       "name": "Project Repository",
       "path": "."
     }
