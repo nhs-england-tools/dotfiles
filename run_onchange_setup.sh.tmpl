@@ -3,6 +3,7 @@
 set -e
 
 eval $({{ joinPath .chezmoi.sourceDir "./dot_local/bin/executable_detect-operating-system.sh" | quote }})
+source ~/.path
 
 for file in {{ joinPath .chezmoi.sourceDir "./assets/*.$SYSTEM_DIST.sh" }}; do
   echo "Running the $file script ..."
