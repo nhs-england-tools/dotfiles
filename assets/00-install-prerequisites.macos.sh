@@ -21,6 +21,8 @@ function install {
 
   # Install Xcode Command Line Tools or print the path of the active developer directory
   xcode-select -p > /dev/null >&2
+  # Accept Xcode licence
+  sudo xcodebuild -license accept ||:
   # Install the Homebrew package manager
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   # Make sure Homebrew packages are owned by the current user
