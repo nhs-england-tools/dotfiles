@@ -24,7 +24,7 @@ function install {
   # Install the Homebrew package manager
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   # Make sure Homebrew packages are owned by the current user
-  sudo chown -R $(id -u):admin $(brew --prefix)/*
+  #sudo chown -R $(id -u):admin $(brew --prefix)/* # FIXME: Add brew to the PATH first
 }
 
 function is_arg_true() {
