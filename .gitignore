@@ -1,2 +1,3 @@
+bin/chezmoi
 *.code-workspace
 !project.code-workspace

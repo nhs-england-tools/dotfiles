@@ -52,20 +52,6 @@ function config-git {
   sed -i '/^max-cache-ttl/d' ~/.gnupg/gpg-agent.conf
   echo "max-cache-ttl 10800" >> ~/.gnupg/gpg-agent.conf
   gpgconf --kill gpg-agent
-
-  git config --global branch.autosetupmerge false
-  git config --global branch.autosetuprebase always
-  git config --global commit.gpgsign true
-  git config --global core.autocrlf input
-  git config --global core.filemode true
-  git config --global core.hidedotfiles false
-  git config --global core.ignorecase false
-  git config --global credential.helper cache
-  git config --global pull.rebase true
-  git config --global push.default current
-  git config --global push.followTags true
-  git config --global rebase.autoStash true
-  git config --global remote.origin.prune true
 }
 
 function install-apps {

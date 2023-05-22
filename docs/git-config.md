@@ -17,24 +17,24 @@ The commands below will configure your Git command-line client globally. Please,
 This configuration is to support trunk-based development and git linear history.
 
 ```shell
-git config --global user.name "Your Name" # Use your full name here
-git config --global user.email "youremail@domain" # Use your email address here
-git config --global branch.autosetupmerge false
-git config --global branch.autosetuprebase always
-git config --global commit.gpgsign true
-git config --global core.autocrlf input
-git config --global core.filemode true
-git config --global core.hidedotfiles false
-git config --global core.ignorecase false
-git config --global credential.helper cache
-git config --global pull.rebase true
-git config --global push.default current
-git config --global push.followTags true
-git config --global rebase.autoStash true
-git config --global remote.origin.prune true
+git config user.name "Your Name" # Use your full name here
+git config user.email "youremail@domain" # Use your email address here
+git config branch.autosetupmerge false
+git config branch.autosetuprebase always
+git config commit.gpgsign true
+git config core.autocrlf input
+git config core.filemode true
+git config core.hidedotfiles false
+git config core.ignorecase false
+git config credential.helper cache
+git config pull.rebase true
+git config push.default current
+git config push.followTags true
+git config rebase.autoStash true
+git config remote.origin.prune true
 ```
 
-Please, see the [`assets/03-install-developer-tools.macos.sh`](https://github.com/make-ops-tools/dotfiles/blob/main/assets/03-install-developer-tools.macos.sh) file, as this section is part of the automated configuration.
+This is already set in the [`dot_gitconfig.tmpl`](https://github.com/make-ops-tools/dotfiles/blob/main/dot_gitconfig.tmpl) file, that is used as a template to create `~/.gitconfig`.
 
 More information on the git settings can be found in the [Git Reference documentation](https://git-scm.com/docs).
 
@@ -110,7 +110,7 @@ gpg --delete-keys $ID
 Configure Git to use the new key.
 
 ```shell
-git config --global user.signingkey $ID
+git config user.signingkey $ID
 ```
 
 Upload the public key to your GitHub profile into the [GPG keys](https://github.com/settings/keys) section. After doing so, please make sure your email address appears as verified against the commits pushed to the remote.

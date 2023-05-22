@@ -12,6 +12,7 @@ update-lib-detect-os: # Update the Detect Operating System libarary from source
 
 clean: # Clean development environment
 	chezmoi state delete-bucket --bucket=scriptState ||:
+	rm -rf ./bin/chezmoi
 
 # ==============================================================================
 
