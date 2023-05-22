@@ -5,7 +5,7 @@ set -e
 # Install office apps on macOS
 #
 # Usage:
-#   $ source "$HOME/.functions"
+#   $ source ./functions.sh
 #   $ ./04-install-office-apps.macos.sh
 #
 # Options:

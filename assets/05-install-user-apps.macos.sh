@@ -5,7 +5,7 @@ set -e
 # Install user apps on macOS
 #
 # Usage:
-#   $ source "$HOME/.functions"
+#   $ source ./functions.sh
 #   $ ./05-install-user-apps.macos.sh
 #
 # Options:

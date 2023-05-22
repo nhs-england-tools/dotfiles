@@ -5,7 +5,7 @@ set -e
 # Install base packages on macOS
 #
 # Usage:
-#   $ source "$HOME/.functions"
+#   $ source ./functions.sh
 #   $ ./02-install-base-packages.macos.sh
 #
 # Options:

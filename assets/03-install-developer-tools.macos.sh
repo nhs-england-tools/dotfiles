@@ -5,7 +5,7 @@ set -e
 # Install developer tools on macOS
 #
 # Usage:
-#   $ source "$HOME/.functions"
+#   $ source ./functions.sh
 #   $ ./03-install-developer-tools.macos.sh
 #
 # Options:
