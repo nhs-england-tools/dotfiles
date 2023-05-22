@@ -4,7 +4,7 @@ scripts
 LICENCE.md
 Makefile
 README.md
-TODO.md
+project.code-workspace
 
 {{ if ne .chezmoi.os "darwin" }}
 .macos
