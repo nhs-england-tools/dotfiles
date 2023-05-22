@@ -40,3 +40,4 @@ function is-arg-true() {
     return 1
   fi
 }
+export -f is-arg-true > /dev/null
