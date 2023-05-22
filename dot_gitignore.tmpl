@@ -42,7 +42,7 @@ Temporary Items
 
 # .nfs files are created when an open file is removed but is still being accessed
 .nfs*
-{{-   if (.chezmoi.kernel.osrelease | lower | contains "microsoft") -}}
+{{-   if (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
 # SEE: https://raw.githubusercontent.com/github/gitignore/main/Global/Windows.gitignore
 
 # Windows thumbnail cache files
@@ -69,5 +69,5 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
-{{-   end -}}
-{{- end -}}
+{{-   end }}
+{{- end }}

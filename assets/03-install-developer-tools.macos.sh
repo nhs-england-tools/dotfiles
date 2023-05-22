@@ -76,6 +76,7 @@ function install-apps {
 
   # Install developer apps
   brew $install \
+    chezmoi \
     drawio \
     gh \
     iterm2 \
