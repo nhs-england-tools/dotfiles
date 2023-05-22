@@ -62,6 +62,7 @@ function install-apps {
 
   # Install developer apps
   brew $install \
+    bitwarden-cli \
     chezmoi \
     drawio \
     gh \
@@ -70,6 +71,7 @@ function install-apps {
     visual-studio-code \
     ||:
   brew $install --cask \
+    bitwarden \
     docker \
     ||:
 }
