@@ -1,10 +1,11 @@
 assets
 docs
 scripts
-LICENCE.md
 Makefile
-README.md
 project.code-workspace
+LICENCE.md
+README.md
+install.sh
 
 {{ if ne .chezmoi.os "darwin" }}
 .macos
