@@ -32,7 +32,7 @@ image_digest=3e42db866de0fc813f74450f1065eab9066607fed34eb119d0db6f4e640e6b8d # 
 
 function main() {
 
-  if is_arg_true "$ALL_FILES"; then
+  if is-arg-true "$ALL_FILES"; then
     # Check all files
     files="*.md"
   else

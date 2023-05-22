@@ -33,7 +33,7 @@ image_digest=0f8f8dd4f393d29755bef2aef4391d37c34e358d676e9d66ce195359a9c72ef3 # 
 
 function main() {
 
-  if is_arg_true "$ALL_FILES"; then
+  if is-arg-true "$ALL_FILES"; then
 
     # Check all files
     docker run --rm --platform linux/amd64 \
