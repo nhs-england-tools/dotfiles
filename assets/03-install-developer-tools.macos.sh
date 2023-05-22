@@ -72,7 +72,10 @@ function install-apps {
     ||:
   brew $install --cask \
     bitwarden \
+    brave-browser \
     docker \
+    firefox \
+    google-chrome \
     ||:
 }
 

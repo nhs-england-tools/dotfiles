@@ -29,12 +29,12 @@ function install {
   brew $install --cask \
     alt-tab \
     appcleaner \
-    bitwarden \
     dozer \
     google-drive \
     keepingyouawake \
     rectangle \
     ||:
+  # TODO: Move that section away as this is too opinionated
   brew $install --cask \
     dcommander \
     enpass \
