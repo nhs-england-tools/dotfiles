@@ -26,20 +26,20 @@ function config-zsh {
   # Use zsh managed by Homebrew
   cat /etc/shells | grep $(brew --prefix)/bin/zsh > /dev/null 2>&1 || sudo sh -c "echo $(brew --prefix)/bin/zsh >> /etc/shells"
   chsh -s $(brew --prefix)/bin/zsh
-
-  # Install Oh-My-ZSH
+  # Install oh-my-zsh
   if (is-arg-true "$REINSTALL") then
     rm -rf "$HOME/.oh-my-zsh"
   fi
+  # Install powerlevel10k theme for zsh as oh-my-zsh plugin
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" "" --unattended ||:
-  # if -d "$HOME/.oh-my-zsh/custom/themes/powerlevel10k" then
-  #   (
-  #     cd "$HOME/.oh-my-zsh/custom/themes/powerlevel10k"
-  #     git pull
-  #   )
-  # else
-  #   git clone https://github.com/romkatv/powerlevel10k.git "$HOME/.oh-my-zsh/custom/themes/powerlevel10k" ||:
-  # fi
+  if [ -d "$HOME/.oh-my-zsh/custom/themes/powerlevel10k" ]; then
+    (
+      cd "$HOME/.oh-my-zsh/custom/themes/powerlevel10k"
+      git pull
+    )
+  else
+    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$HOME/.oh-my-zsh/custom/themes/powerlevel10k" ||:
+  fi
 }
 
 function config-git {
