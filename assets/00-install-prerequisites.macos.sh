@@ -1,10 +1,11 @@
-#!/bin/sh
+#!/bin/bash
 
 set -e
 
 # Install prerequisites on macOS
 #
 # Usage:
+#   $ source "$HOME/.functions"
 #   $ ./00-install-prerequisites.macos.sh
 #
 # Options:
@@ -25,22 +26,11 @@ function install {
   sudo xcodebuild -license accept ||:
   # Install the Homebrew package manager
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  # Make sure Homebrew packages are owned by the current user
-  #sudo chown -R $(id -u):admin $(brew --prefix)/* # FIXME: Add brew to the PATH first
-}
-
-function is_arg_true() {
-
-  if [[ "$1" =~ ^(true|yes|y|on|1|TRUE|YES|Y|ON)$ ]]; then
-    return 0
-  else
-    return 1
-  fi
 }
 
 # ==============================================================================
 
-is_arg_true "$VERBOSE" && set -x
+is-arg-true "$VERBOSE" && set -x
 
 main $*
 

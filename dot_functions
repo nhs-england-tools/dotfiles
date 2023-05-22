@@ -2,11 +2,13 @@
 # git
 
 function git-pull {
+
   git branch -r | grep -v '\->' | while read remote; do git branch --track "${remote#origin/}" "$remote" 2> /dev/null; done
   git pull --all
 }
 
 function git-prune {
+
   git fetch --prune
   for branch in $(git for-each-ref --format '%(refname) %(upstream:track)' refs/heads | awk '$2 == "[gone]" {sub("refs/heads/", "", $1); print $1}'); do
     git branch -D $branch
@@ -17,6 +19,24 @@ function git-prune {
 }
 
 function git-track {
+
   branch=$(git rev-parse --abbrev-ref HEAD)
   git branch --set-upstream-to=origin/$branch $branch
+}
+
+# ==============================================================================
+# scripting
+
+# Check if variable is set to true
+#
+# Usage:
+#   is-arg-true $VARIABLE && echo yes || echo no
+
+function is-arg-true() {
+
+  if [[ "$1" =~ ^(true|yes|y|on|1|TRUE|YES|Y|ON)$ ]]; then
+    return 0
+  else
+    return 1
+  fi
 }

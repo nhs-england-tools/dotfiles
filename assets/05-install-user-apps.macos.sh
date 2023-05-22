@@ -1,10 +1,11 @@
-#!/bin/sh
+#!/bin/bash
 
 set -e
 
 # Install user apps on macOS
 #
 # Usage:
+#   $ source "$HOME/.functions"
 #   $ ./05-install-user-apps.macos.sh
 #
 # Options:
@@ -23,7 +24,7 @@ function install {
   # Customise brew execution
   HOMEBREW_NO_AUTO_UPDATE=1
   install="install"
-  if (is_arg_true "$REINSTALL") then
+  if (is-arg-true "$REINSTALL") then
     install="reinstall --force"
   fi
 
@@ -49,18 +50,9 @@ function install {
     ||:
 }
 
-function is_arg_true() {
-
-  if [[ "$1" =~ ^(true|yes|y|on|1|TRUE|YES|Y|ON)$ ]]; then
-    return 0
-  else
-    return 1
-  fi
-}
-
 # ==============================================================================
 
-is_arg_true "$VERBOSE" && set -x
+is-arg-true "$VERBOSE" && set -x
 
 main $*
 

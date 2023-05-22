@@ -57,6 +57,12 @@ You can use the convenience script to install the dotfiles on any machine with a
 sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply $GITHUB_ORG # "make-ops-tools"
 ```
 
+or clone the repository ...
+
+```shell
+git clone https://github.com/make-ops-tools/dotfiles.git ~/.local/share/chezmoi
+```
+
 Installation flow diagram
 
 ```mermaid

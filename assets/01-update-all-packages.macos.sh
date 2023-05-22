@@ -1,10 +1,11 @@
-#!/bin/sh
+#!/bin/bash
 
 set -e
 
 # Update all packages on macOS
 #
 # Usage:
+#   $ source "$HOME/.functions"
 #   $ ./01-update-all-packages.macos.sh
 #
 # Options:
@@ -42,18 +43,9 @@ function install {
   brew cu --all --yes ||:
 }
 
-function is_arg_true() {
-
-  if [[ "$1" =~ ^(true|yes|y|on|1|TRUE|YES|Y|ON)$ ]]; then
-    return 0
-  else
-    return 1
-  fi
-}
-
 # ==============================================================================
 
-is_arg_true "$VERBOSE" && set -x
+is-arg-true "$VERBOSE" && set -x
 
 main $*
 

@@ -1,1 +1,1 @@
-export GPG_TTY=$TTY
+export GPG_TTY=$(tty)
