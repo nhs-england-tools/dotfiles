@@ -11,8 +11,9 @@ update-lib-detect-os: # Update the Detect Operating System libarary from source
 	chmod +x ./dot_local/bin/executable_detect-operating-system.sh
 
 clean: # Clean development environment
-	chezmoi state delete-bucket --bucket=scriptState ||:
-	rm -rf ./bin/chezmoi
+	rm -rf \
+		~/.config/chezmoi \
+		./bin/chezmoi
 
 # ==============================================================================
 
