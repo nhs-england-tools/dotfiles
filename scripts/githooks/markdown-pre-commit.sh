@@ -44,7 +44,7 @@ function main() {
     docker run --rm --platform linux/amd64 \
       --volume=$PWD:/workdir \
       ghcr.io/igorshubovych/markdownlint-cli@sha256:$image_digest \
-        "$files" \
+        $files \
         --disable MD013 MD033
   fi
 }
