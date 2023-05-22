@@ -8,6 +8,6 @@ source "$HOME/.exports"
 source "$HOME/.functions"
 
 for file in {{ joinPath .chezmoi.sourceDir "./assets/*.$SYSTEM_DIST.sh" }}; do
-  echo "Running the $file script ..."
+  print-header "Running the $file script ..."
   "$file"
 done
