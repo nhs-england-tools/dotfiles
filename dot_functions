@@ -31,7 +31,7 @@ function git-track {
 #
 # Usage:
 #   is-arg-true $VARIABLE && echo yes || echo no
-
+#
 function is-arg-true() {
 
   if [[ "$1" =~ ^(true|yes|y|on|1|TRUE|YES|Y|ON)$ ]]; then
@@ -40,14 +40,14 @@ function is-arg-true() {
     return 1
   fi
 }
-export -f is-arg-true > /dev/null
 
 # Print header
 #
 # Usage:
 #   print-header "This is a header"
-
+#
 function print-header() {
+
     printf -- "\n%s${*}%s\n\n" >&2 "$BOLD$BLUE" "$RESET"
 }
 
@@ -55,8 +55,9 @@ function print-header() {
 #
 # Usage:
 #   print-error "This is an error"
-
+#
 function print-error() {
+
     printf -- "%sError: ${*}%s\n" >&2 "$RED" "$RESET"
 }
 

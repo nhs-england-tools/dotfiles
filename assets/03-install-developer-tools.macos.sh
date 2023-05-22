@@ -72,10 +72,7 @@ function install-apps {
 
   # Customise brew execution
   HOMEBREW_NO_AUTO_UPDATE=1
-  install="install"
-  if (is-arg-true "$REINSTALL") then
-    install="reinstall --force"
-  fi
+  is-arg-true "$REINSTALL" && install="reinstall --force" || install="install"
 
   # Install developer apps
   brew $install \
