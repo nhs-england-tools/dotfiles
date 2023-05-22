@@ -1,9 +1,4 @@
 # ==============================================================================
-# shell
-
-alias reload="exec $SHELL -l" # Reload shell
-
-# ==============================================================================
 # git
 
 alias g="git"
@@ -46,6 +41,12 @@ alias dvl="docker volume ls"
 alias dvr='docker volume rm $(docker volume ls --quiet --filter dangling=true) 2> /dev/null'
 
 # ==============================================================================
-# vscode
+# [tools]
 
 alias c='code $(ls -1 *.code-workspace)'
+alias cz="chezmoi"
+
+# ==============================================================================
+# [shell]
+
+alias reload="exec $SHELL -l" # Reload shell
