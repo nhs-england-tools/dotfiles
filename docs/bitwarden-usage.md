@@ -1,10 +1,7 @@
-# chezmoi
+# Bitwarden Usage
 
-- [chezmoi](#chezmoi)
+- [Bitwarden Usage](#bitwarden-usage)
   - [Setup your password manager](#setup-your-password-manager)
-  - [Apply changes from the local repository](#apply-changes-from-the-local-repository)
-  - [Show cached configuration data](#show-cached-configuration-data)
-  - [Test a template code snippet](#test-a-template-code-snippet)
 
 ## Setup your password manager
 
@@ -40,25 +37,4 @@ bw list items
 ```shell
 bw sync
 bw get item "dotfiles"
-```
-
-## Apply changes from the local repository
-
-```shell
-chezmoi cd
-pwd # should be ~/.local/share/chezmoi
-chezmoi apply --init
-```
-
-## Show cached configuration data
-
-```shell
-chezmoi data | jq
-cat ~/.config/chezmoi/chezmoi.toml
-```
-
-## Test a template code snippet
-
-```shell
-chezmoi execute-template '{{ (bitwarden "item" "dotfiles").identity.firstName }} {{ (bitwarden "item" "dotfiles").identity.lastName }}'
 ```

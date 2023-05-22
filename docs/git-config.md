@@ -1,8 +1,8 @@
-# git-config
+# Git Config
 
 ## Table of contents
 
-- [git-config](#git-config)
+- [Git Config](#git-config)
   - [Table of contents](#table-of-contents)
   - [Configuration](#configuration)
   - [Signing commits](#signing-commits)
