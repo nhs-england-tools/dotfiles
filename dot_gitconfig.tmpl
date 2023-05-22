@@ -1,9 +1,27 @@
 [core]
   attributesfile = ~/.gitattributes
   excludesfile = ~/.gitignore
+  autocrlf = input
+  filemode = true
+  hidedotfiles = false
+  ignorecase = false
 [commit]
   gpgsign = true
 [user]
   email = {{ .dotfiles.email | quote }}
   name = {{ .dotfiles.name | quote }}
   signingkey = {{ .dotfiles.git_signingkey | quote }}
+[branch]
+  autosetupmerge = false
+  autosetuprebase = always
+[credential]
+  helper = cache
+[pull]
+  rebase = true
+[push]
+  default = current
+  followTags = true
+[rebase]
+  autoStash = true
+[remote "origin"]
+  prune = true
