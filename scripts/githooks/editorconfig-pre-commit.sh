@@ -61,7 +61,7 @@ function main() {
   fi
 }
 
-function is_arg_true() {
+function is-arg-true() {
 
   if [[ "$1" =~ ^(true|yes|y|on|1|TRUE|YES|Y|ON)$ ]]; then
     return 0
@@ -72,7 +72,7 @@ function is_arg_true() {
 
 # ==============================================================================
 
-is_arg_true "$VERBOSE" && set -x
+is-arg-true "$VERBOSE" && set -x
 
 main $*
 
