@@ -17,11 +17,12 @@ indent_size = 4
 [*{.mk,Makefile}]
 indent_style = tab
 
-# Ignore file
+# ==============================================================================
+
+[dot_gitconfig.tmpl]
+indent_size = 1
+indent_style = tab
+
 [dot_gitignore.tmpl]
-charset = unset
 end_of_line = unset
-indent_size = unset
-indent_style = unset
-insert_final_newline = unset
 trim_trailing_whitespace = unset

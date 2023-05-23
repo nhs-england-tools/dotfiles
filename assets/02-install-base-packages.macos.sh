@@ -33,6 +33,7 @@ function install {
     binutils \
     coreutils \
     curl \
+    diff-so-fancy \
     diffutils \
     findutils \
     gawk \
@@ -54,6 +55,7 @@ function install {
     readline \
     ripgrep \
     screen \
+    tmux \
     tree \
     watch \
     wdiff \

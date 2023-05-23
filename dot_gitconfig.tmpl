@@ -1,27 +1,88 @@
-[core]
-  attributesfile = ~/.gitattributes
-  excludesfile = ~/.gitignore
-  autocrlf = input
-  filemode = true
-  hidedotfiles = false
-  ignorecase = false
-[commit]
-  gpgsign = true
-[user]
-  email = {{ .dotfiles.email | quote }}
-  name = {{ .dotfiles.name | quote }}
-  signingkey = {{ .dotfiles.git_signingkey | quote }}
+[alias]
+
+	lgb = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset%n' --abbrev-commit --date=relative --branches
+	l = log --pretty=oneline -n 50 --graph --abbrev-commit
+	ll = log --pretty=format:\"%C(yellow)%h%Creset %C(cyan)%ci%Creset %C(green)%ce%Creset%x09%s%C(cyan)%C(bold)%d%Creset\" -n 50 --graph
+
+[apply]
+
+	whitespace = fix # Fix whitespace errors when applying a patch
+
 [branch]
-  autosetupmerge = false
-  autosetuprebase = always
+
+	autosetupmerge = false # Do not track starting branch, use `git-track` function
+	autosetuprebase = always # Rebase changes on pull
+
+[commit]
+
+	gpgsign = true
+
+[color]
+
+	branch = auto
+	diff = auto
+	grep = auto
+	interactive = auto
+	showBranch = auto
+	status = auto
+	ui = true
+
+[color "diff"]
+
+	#commit =
+	#context =
+	#func =
+	#whitespace =
+	frag = white bold
+	meta = blue
+	new = green
+	old = red
+
+[core]
+
+	attributesfile = ~/.gitattributes
+	autocrlf = input
+	excludesfile = ~/.gitignore
+	filemode = true
+	hidedotfiles = false
+	ignorecase = false
+	pager = "diff-so-fancy | less --tabs=4 -RFX" # See https://github.com/so-fancy/diff-so-fancy
+
 [credential]
-  helper = cache
+
+	helper = cache
+
+[diff]
+
+	renames = copies # Detect copies as well as renames
+
+[diff "bin"]
+
+	textconv = hexdump -v -C # Use `hexdump` to generate a human-readable diff
+
+[interactive]
+
+	diffFilter = "diff-so-fancy --patch" # See https://github.com/so-fancy/diff-so-fancy
+
 [pull]
-  rebase = true
+
+	rebase = true # Rebase branch on top of fetched branch
+
 [push]
-  default = current
-  followTags = true
+
+	default = current # Push the current branch to update a branch with the same name on the receiving end
+	followTags = true # Push as well tags that are reachable from the commits
+
 [rebase]
-  autoStash = true
+
+	autoStash = true # Create a temporary stash entry before the operation begins, and apply it after the operation ends
+
 [remote "origin"]
-  prune = true
+
+	prune = true # Delete stale references associated with "origin"
+
+[user]
+
+	email = {{ .dotfiles.email | quote }}
+	name = {{ .dotfiles.name | quote }}
+	signingkey = {{ .dotfiles.git_signingkey | quote }}
