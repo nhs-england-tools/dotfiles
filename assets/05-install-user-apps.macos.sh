@@ -34,17 +34,6 @@ function install {
     keepingyouawake \
     rectangle \
     ||:
-  # TODO: Move that section away as this is too opinionated
-  brew $install --cask \
-    dcommander \
-    enpass \
-    istat-menus \
-    nordvpn \
-    raindropio \
-    tripmode \
-    vlc \
-    wifi-explorer \
-    ||:
 }
 
 # ==============================================================================
