@@ -5,3 +5,6 @@ export GPG_TTY=$TTY
 export EDITOR="code --wait --new-window"
 export VISUAL="code --wait --new-window"
 export GIT_EDITOR="code --wait --new-window"
+
+# Utilise the extended colour palette in the command-line output
+export TERM=xterm-256color
