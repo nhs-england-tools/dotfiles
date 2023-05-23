@@ -50,3 +50,8 @@ alias cz="chezmoi"
 # [shell]
 
 alias reload="exec $SHELL -l" # Reload shell
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias ~="cd ~"
+alias -- -="cd -"

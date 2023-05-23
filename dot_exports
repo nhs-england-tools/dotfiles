@@ -1,5 +1,5 @@
 # Allow commit signing from the command-line
-export GPG_TTY=$TTY
+export GPG_TTY="$TTY"
 
 # Customise the command-line experience and work with the recommended editor
 export EDITOR="code --wait --new-window"
@@ -7,4 +7,11 @@ export VISUAL="code --wait --new-window"
 export GIT_EDITOR="code --wait --new-window"
 
 # Utilise the extended colour palette in the command-line output
-export TERM=xterm-256color
+export TERM="xterm-256color"
+
+# Prefer to use en_GB.UTF-8 locale
+export LANG="en_GB.UTF-8"
+export LC_ALL="en_GB.UTF-8"
+
+# Do not clear screen after quitting a manual page
+export MANPAGER="less -X"
