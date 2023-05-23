@@ -112,7 +112,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 eval $(source "$HOME/.local/bin/detect-operating-system.sh")
-for file in $HOME/.{path,exports,functions,aliases,extra,$SYSTEM_DIST}; do
+for file in $HOME/.{path,exports,functions,aliases,extra,$SYSTEM_DIST,custom}; do
   [ -f "$file" ] && source "$file"
 done
 unset file;

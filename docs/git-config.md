@@ -121,11 +121,11 @@ cat $file.gpg-key.pub
 
 ### Troubleshooting
 
-If you receive the error message "error: gpg failed to sign the data", make sure you added `export GPG_TTY=$(tty)` to your `~/.zshrc` or other file that is sourced by it, like `~/.exports` and restarted your terminal.
+If you receive the error message "error: gpg failed to sign the data", make sure you added `export GPG_TTY=$TTY` to your `~/.zshrc` or other file that is sourced by it, like `~/.exports` and restarted your terminal.
 
 ```shell
 sed -i '/^export GPG_TTY/d' ~/.exports
-echo export GPG_TTY=\$\(tty\) >> ~/.exports
+echo "export GPG_TTY=\$TTY" >> ~/.exports
 ```
 
 ## Additional useful settings and commands

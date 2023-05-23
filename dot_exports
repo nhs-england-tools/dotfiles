@@ -1,1 +1,7 @@
-export GPG_TTY=$(tty)
+# Allow commit signing from the command-line
+export GPG_TTY=$TTY
+
+# Customise the command-line experience and work with the recommended editor
+export EDITOR="code --wait --new-window"
+export VISUAL="code --wait --new-window"
+export GIT_EDITOR="code --wait --new-window"
