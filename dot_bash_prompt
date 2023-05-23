@@ -1,0 +1,70 @@
+# Utilise the extended colour palette in the command-line output
+if [[ $COLORTERM = gnome-* && $TERM = xterm ]] && infocmp gnome-256color > /dev/null 2>&1; then
+  export TERM="gnome-256color"
+elif infocmp xterm-256color > /dev/null 2>&1; then
+  export TERM="xterm-256color"
+fi
+if tput setaf 1 > /dev/null 2>&1; then
+  tput sgr0
+  export bold=$(tput bold)
+  export reset=$(tput sgr0)
+  export black=$(tput setaf 0)
+  export blue=$(tput setaf 33)
+  export cyan=$(tput setaf 37)
+  export green=$(tput setaf 64)
+  export orange=$(tput setaf 166)
+  export pink=$(tput setaf 9)
+  export purple=$(tput setaf 125)
+  export red=$(tput setaf 124)
+  export violet=$(tput setaf 61)
+  export white=$(tput setaf 15)
+  export yellow=$(tput setaf 136)
+else
+  export bold=""
+  export reset="\e[0m"
+  export black="\e[1;30m"
+  export blue="\e[1;34m"
+  export cyan="\e[1;36m"
+  export green="\e[1;32m"
+  export orange="\e[1;33m"
+  export pink="\e[1;31m"
+  export purple="\e[1;35m"
+  export red="\e[1;31m"
+  export violet="\e[1;35m"
+  export white="\e[1;37m"
+  export yellow="\e[1;33m"
+fi
+
+# Highlight the user and host name when logged in as root
+if [[ $(id -un) == "root" ]] || [[ "$USER" == "root" ]]; then
+  userStyle="${pink}"
+  hostStyle="${pink}"
+else
+  userStyle="${orange}"
+  hostStyle="${yellow}"
+fi
+
+function prompt_command() {
+
+  local exit_code=$?
+  if [ $exit_code -ne 0 ]; then
+    exit_code=" \[${reset}${pink}\](${exit_code})"
+  else
+    exit_code=""
+  fi
+
+  PS1="\[\033]0;\w\007\]"
+  PS1+="\[${bold}${userStyle}\]\u "           # {user}
+  PS1+="\[${reset}${white}\]at "              # at
+  PS1+="\[${bold}${hostStyle}\]\h "           # {host}
+  PS1+="\[${reset}${white}\]in "              # in
+  PS1+="\[${bold}${green}\]\w"                # {dir}
+  PS1+="${exit_code}"                              # {exit_code}
+  PS1+="\[${reset}${white}\] \$ \[${reset}\]" # $
+  export PS1
+
+  PS2="\[${white}\]→ \[${reset}\]"
+  export PS2
+}
+
+export PROMPT_COMMAND="prompt_command"
