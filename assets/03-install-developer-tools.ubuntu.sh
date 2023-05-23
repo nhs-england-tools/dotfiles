@@ -2,11 +2,11 @@
 
 set -e
 
-# Install prerequisites on Ubuntu
+# Install developer tools on Ubuntu
 #
 # Usage:
 #   $ source ./functions.sh
-#   $ ./00-install-prerequisites.ubuntu.sh
+#   $ ./03-install-developer-tools.ubuntu.sh
 #
 # Options:
 #   REINSTALL=true  # Attempts to reinstall the packages, default is `false`
