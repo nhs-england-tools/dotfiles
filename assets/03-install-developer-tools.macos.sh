@@ -30,7 +30,7 @@ function config-zsh {
   if (is-arg-true "$REINSTALL") then
     rm -rf "$HOME/.oh-my-zsh"
   fi
-  # Install powerlevel10k theme for zsh as oh-my-zsh plugin
+  # Install powerlevel10k theme for zsh
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" "" --unattended ||:
   if [ -d "$HOME/.oh-my-zsh/custom/themes/powerlevel10k" ]; then
     (
@@ -42,9 +42,13 @@ function config-zsh {
   fi
   # Install vscode extensions
   is-arg-true "$REINSTALL" && vs_ext_force="--force" || vs_ext_force=""
-  for file in $(cat ${CHEZMOI_SOURCE_DIR:-$(chezmoi source-path)}/.vscode/extensions.json | jq '.recommendations[]' --raw-output); do
+  for file in $(cat "${CHEZMOI_SOURCE_DIR:-$(chezmoi source-path)}/.vscode/extensions.json" | jq '.recommendations[]' --raw-output); do
     code $vs_ext_force --install-extension $file ||:
   done
+  # Install iTerm theme
+  defaults import \
+    com.googlecode.iterm2 \
+    "${CHEZMOI_SOURCE_DIR:-$(chezmoi source-path)}/assets/iterm2/com.googlecode.iterm2.xml"
 }
 
 function config-git {

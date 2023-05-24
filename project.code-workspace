@@ -8,6 +8,7 @@
   // SEE: User settings ./assets/vscode/settings.json
   "settings": {
     "files.associations": {
+      "*.itermcolors": "xml",
       "dot_aliases": "shellscript",
       "dot_bash_profile": "shellscript",
       "dot_bash_prompt": "shellscript",

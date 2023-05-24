@@ -8,6 +8,7 @@
     "terraform",
     "terraform-vars"
   ],
+  "redhat.telemetry.enabled": false,
   "todohighlight.keywords": [
     "SEE:"
   ],
@@ -15,7 +16,7 @@
   "breadcrumbs.enabled": true,
   "editor.autoIndent": "full",
   "editor.bracketPairColorization.enabled": true,
-  "editor.fontSize": 14,
+  "editor.fontSize": 18,
   "editor.formatOnSave": true,
   "editor.guides.bracketPairs": "active",
   "editor.renderWhitespace": "boundary",
@@ -33,10 +34,11 @@
   "files.trimFinalNewlines": true,
   "files.trimTrailingWhitespace": true,
   "terminal.integrated.fontFamily": "Hack Nerd Font",
+  "window.newWindowDimensions": "maximized",
   "window.title": "${activeEditorMedium}${separator}${rootName}${separator}${rootPath}",
-  "window.zoomLevel": 0,
-  "workbench.colorTheme": "GitHub Dark Default",
+  "window.zoomLevel": 1,
+  "workbench.colorTheme": "GitHub Dark Dimmed",
   "workbench.editor.enablePreview": true,
   "workbench.iconTheme": "vscode-icons",
-  "workbench.tree.indent": 24
+  "workbench.tree.indent": 20
 }
