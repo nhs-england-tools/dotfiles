@@ -8,7 +8,7 @@ chmod 700 $HOME/{.aws,.azure,.cache,.config,.docker,.gnupg,.kube,.local,.ssh,bin
 eval $(source "$HOME/.local/bin/detect-operating-system.sh")
 source "$HOME/.path"
 
-source {{ joinPath .chezmoi.sourceDir "./assets/functions.sh" }}
+source {{ joinPath .chezmoi.sourceDir "./assets/commons.sh" }}
 for file in {{ joinPath .chezmoi.sourceDir "./assets/*.$SYSTEM_DIST.sh" }}; do
   print-header "Running the $file script ..."
   "$file"

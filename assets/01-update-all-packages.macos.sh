@@ -5,7 +5,7 @@ set -e
 # Update all packages on macOS
 #
 # Usage:
-#   $ source ./functions.sh
+#   $ source ./commons.sh
 #   $ ./01-update-all-packages.macos.sh
 #
 # Options:

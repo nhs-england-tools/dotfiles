@@ -5,7 +5,7 @@ set -e
 # Install base packages on macOS
 #
 # Usage:
-#   $ source ./functions.sh
+#   $ source ./commons.sh
 #   $ ./02-install-base-packages.macos.sh
 #
 # Options:

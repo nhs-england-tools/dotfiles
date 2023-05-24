@@ -1,5 +1,5 @@
 # ==============================================================================
-# Common functions
+# Supporting functions
 
 # Check if variable is set to true
 #
@@ -39,7 +39,7 @@ function print-error() {
 export -f print-error > /dev/null
 
 # ==============================================================================
-# Helper functions
+# Private functions
 
 function _setup_color() {
 

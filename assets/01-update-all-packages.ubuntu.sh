@@ -5,7 +5,7 @@ set -e
 # Update all packages on Ubuntu
 #
 # Usage:
-#   $ source ./functions.sh
+#   $ source ./commons.sh
 #   $ ./01-update-all-packages.ubuntu.sh
 #
 # Options:

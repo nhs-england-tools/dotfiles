@@ -5,7 +5,7 @@ set -e
 # Install base packages on Ubuntu
 #
 # Usage:
-#   $ source ./functions.sh
+#   $ source ./commons.sh
 #   $ ./02-install-base-packages.ubuntu.sh
 #
 # Options:

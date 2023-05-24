@@ -5,7 +5,7 @@ set -e
 # Install developer tools on Ubuntu
 #
 # Usage:
-#   $ source ./functions.sh
+#   $ source ./commons.sh
 #   $ ./03-install-developer-tools.ubuntu.sh
 #
 # Options:

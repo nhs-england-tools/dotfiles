@@ -5,7 +5,7 @@ set -e
 # Install prerequisites on Ubuntu
 #
 # Usage:
-#   $ source ./functions.sh
+#   $ source ./commons.sh
 #   $ ./00-install-prerequisites.ubuntu.sh
 #
 # Options:

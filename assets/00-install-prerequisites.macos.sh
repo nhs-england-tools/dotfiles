@@ -5,7 +5,7 @@ set -e
 # Install prerequisites on macOS
 #
 # Usage:
-#   $ source ./functions.sh
+#   $ source ./commons.sh
 #   $ ./00-install-prerequisites.macos.sh
 #
 # Options:
