@@ -2,7 +2,8 @@
 
 set -e
 
-chmod +x $HOME/.local/bin/*
+mkdir -p $HOME/{.aws,.azure,.cache,.config,.docker,.gnupg,.kube,.local,.ssh,bin,Projects}
+chmod 700 $HOME/{.aws,.azure,.cache,.config,.docker,.gnupg,.kube,.local,.ssh,bin,Projects}
 
 eval $(source "$HOME/.local/bin/detect-operating-system.sh")
 source "$HOME/.path"

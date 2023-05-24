@@ -1,0 +1,42 @@
+{
+  // Extensions settings
+  "cSpell.language": "en,en-GB",
+  "cSpell.enableFiletypes": [
+    "dockerfile",
+    "makefile",
+    "shellscript",
+    "terraform",
+    "terraform-vars"
+  ],
+  "todohighlight.keywords": [
+    "SEE:"
+  ],
+  // General project settings
+  "breadcrumbs.enabled": true,
+  "editor.autoIndent": "full",
+  "editor.bracketPairColorization.enabled": true,
+  "editor.fontSize": 14,
+  "editor.formatOnSave": true,
+  "editor.guides.bracketPairs": "active",
+  "editor.renderWhitespace": "boundary",
+  "editor.rulers": [
+    80,
+    120
+  ],
+  "editor.suggestSelection": "recentlyUsedByPrefix",
+  "explorer.autoReveal": true,
+  "explorer.sortOrder": "default",
+  "extensions.ignoreRecommendations": true,
+  "files.autoSave": "onFocusChange",
+  "files.eol": "\n",
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "files.trimTrailingWhitespace": true,
+  "terminal.integrated.fontFamily": "Hack Nerd Font",
+  "window.title": "${activeEditorMedium}${separator}${rootName}${separator}${rootPath}",
+  "window.zoomLevel": 0,
+  "workbench.colorTheme": "GitHub Dark Default",
+  "workbench.editor.enablePreview": true,
+  "workbench.iconTheme": "vscode-icons",
+  "workbench.tree.indent": 24
+}

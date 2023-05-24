@@ -1,0 +1,105 @@
+[
+  {
+    "key": "ctrl+=",
+    "command": "editor.action.fontZoomIn"
+  },
+  {
+    "key": "ctrl+-",
+    "command": "editor.action.fontZoomOut"
+  },
+  {
+    "key": "ctrl+0",
+    "command": "editor.action.fontZoomReset"
+  },
+  {
+    "key": "shift+enter",
+    "command": "editor.action.deleteLines",
+    "when": "textInputFocus && !editorReadonly"
+  },
+  {
+    "key": "insert",
+    "command": "editor.action.smartSelect.expand",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "shift+insert",
+    "command": "editor.action.smartSelect.shrink",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "alt+insert",
+    "command": "editor.action.smartSelect.expand",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "alt+shift+insert",
+    "command": "editor.action.smartSelect.shrink",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+tab",
+    "command": "workbench.action.nextEditor"
+  },
+  {
+    "key": "ctrl+shift+tab",
+    "command": "workbench.action.previousEditor"
+  },
+  {
+    "key": "ctrl+shift+right",
+    "command": "workbench.action.splitEditorRight"
+  },
+  {
+    "key": "ctrl+shift+down",
+    "command": "workbench.action.splitEditorDown"
+  },
+  {
+    "key": "ctrl+enter",
+    "command": "editor.action.insertLineAfter"
+  },
+  {
+    "key": "ctrl+shift+enter",
+    "command": "editor.action.insertLineBefore"
+  },
+  {
+    "key": "ctrl+insert",
+    "command": "openReference"
+  },
+  {
+    "key": "ctrl+left",
+    "command": "workbench.action.focusLeftGroup"
+  },
+  {
+    "key": "ctrl+right",
+    "command": "workbench.action.focusRightGroup"
+  },
+  {
+    "key": "ctrl+down",
+    "command": "workbench.action.focusBelowGroup"
+  },
+  {
+    "key": "ctrl+up",
+    "command": "workbench.action.focusAboveGroup"
+  },
+  {
+    "key": "ctrl+alt+left",
+    "command": "workbench.action.navigateBack"
+  },
+  {
+    "key": "ctrl+alt+right",
+    "command": "workbench.action.navigateForward"
+  },
+  {
+    "key": "ctrl+]",
+    "command": "editor.action.jumpToBracket",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+shift+]",
+    "command": "editor.action.selectToBracket",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+p",
+    "command": "workbench.action.showAllEditorsByMostRecentlyUsed"
+  },
+]

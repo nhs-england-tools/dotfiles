@@ -40,6 +40,11 @@ function config-zsh {
   else
     git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$HOME/.oh-my-zsh/custom/themes/powerlevel10k" ||:
   fi
+  # Install vscode extensions
+  is-arg-true "$REINSTALL" && vs_ext_force="--force" || vs_ext_force=""
+  for file in $(cat ${CHEZMOI_SOURCE_DIR:-$(chezmoi source-path)}/.vscode/extensions.json | jq '.recommendations[]' --raw-output); do
+    code $vs_ext_force --install-extension $file ||:
+  done
 }
 
 function config-git {

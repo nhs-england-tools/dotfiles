@@ -5,32 +5,13 @@
       "path": "."
     }
   ],
+  // SEE: User settings ./assets/vscode/settings.json
   "settings": {
-    "breadcrumbs.enabled": true,
-    "editor.autoIndent": "full",
-    "editor.bracketPairColorization.enabled": true,
-    "editor.fontSize": 14,
-    "editor.formatOnSave": true,
-    "editor.guides.bracketPairs": "active",
-    "editor.renderWhitespace": "boundary",
-    "editor.rulers": [
-      80,
-      120
-    ],
-    "editor.suggestSelection": "recentlyUsedByPrefix",
-    "explorer.autoReveal": true,
-    "explorer.sortOrder": "type",
-    "extensions.ignoreRecommendations": true,
-    "files.autoSave": "onFocusChange",
-    "files.eol": "\n",
-    "files.insertFinalNewline": true,
-    "files.trimFinalNewlines": true,
-    "files.trimTrailingWhitespace": true,
-    "terminal.integrated.fontFamily": "Hack Nerd Font",
-    "window.title": "${activeEditorMedium}${separator}${rootName}${separator}${rootPath}",
-    "window.zoomLevel": 0,
-    "workbench.colorTheme": "GitHub Dark Default",
-    "workbench.editor.enablePreview": true,
-    "workbench.tree.indent": 24
+    "files.associations": {
+      "dot_gitattributes": "properties",
+      "dot_gitconfig.tmpl": "properties",
+      "dot_gitignore.tmpl": "properties",
+      "dot_gitmessage": "properties"
+    }
   }
 }
