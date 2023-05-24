@@ -48,7 +48,7 @@ function config-zsh {
   # Install iTerm theme
   defaults import \
     com.googlecode.iterm2 \
-    "${CHEZMOI_SOURCE_DIR:-$(chezmoi source-path)}/assets/iterm2/com.googlecode.iterm2.xml"
+    "${CHEZMOI_SOURCE_DIR:-$(chezmoi source-path)}/assets/iterm2/settings.xml"
 }
 
 function config-git {
