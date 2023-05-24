@@ -1,8 +1,8 @@
-# Git Config
+# Git Usage
 
 ## Table of contents
 
-- [Git Config](#git-config)
+- [Git Usage](#git-usage)
   - [Table of contents](#table-of-contents)
   - [Configuration](#configuration)
   - [Signing commits](#signing-commits)
