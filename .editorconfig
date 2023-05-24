@@ -20,7 +20,7 @@ indent_style = tab
 # ==============================================================================
 
 [dot_gitconfig.tmpl]
-indent_size = 1
+indent_size = 4
 indent_style = tab
 
 [dot_gitignore.tmpl]

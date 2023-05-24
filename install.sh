@@ -16,7 +16,7 @@ set -e
 
 function main() {
 
-  [ -z "$SYSTEM_DIST" ] && eval $(source "$HOME/.local/bin/executable_detect-operating-system.sh")
+  [ -z "$SYSTEM_DIST" ] && eval $(source "$HOME/.local/bin/detect-operating-system.sh")
 
   install-prerequisites
   install-dotfiles

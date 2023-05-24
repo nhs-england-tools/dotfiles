@@ -47,7 +47,8 @@
 	filemode = true
 	hidedotfiles = false
 	ignorecase = false
-	pager = "diff-so-fancy | less --tabs=4 -RFX" # See https://github.com/so-fancy/diff-so-fancy
+	pager = "diff-so-fancy | less --tabs=4 -RFX" # See https://github.com/so-fancy/diff-so-fancy
+	trustctime = false # See http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/
 
 [credential]
 
@@ -76,7 +77,7 @@
 
 [rebase]
 
-	autoStash = true # Create a temporary stash entry before the operation begins, and apply it after the operation ends
+	autoStash = true # Create a temporary stash entry before the operation begins, and apply it after the operation ends
 
 [remote "origin"]
 

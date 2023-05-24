@@ -1,5 +1,5 @@
 {{- if eq .chezmoi.os "darwin" -}}
-path_homebrew="/opt/homebrew/opt/coreutils/libexec/gnubin:/opt/homebrew/opt/curl/bin:/opt/homebrew/opt/findutils/libexec/gnubin:/opt/homebrew/opt/gnu-sed/libexec/gnubin:/opt/homebrew/opt/gnu-tar/libexec/gnubin:/opt/homebrew/opt/grep/libexec/gnubin:/opt/homebrew/opt/make/libexec/gnubin:/opt/homebrew/opt/openssl/bin:/usr/local/opt/coreutils/libexec/gnubin:/usr/local/opt/curl/bin:/usr/local/opt/findutils/libexec/gnubin:/usr/local/opt/gnu-sed/libexec/gnubin:/usr/local/opt/gnu-tar/libexec/gnubin:/usr/local/opt/grep/libexec/gnubin:/usr/local/opt/make/libexec/gnubin:/usr/local/opt/openssl/bin:/opt/homebrew/bin:/usr/local/Homebrew/bin"
+path_homebrew="/opt/homebrew/opt/coreutils/libexec/gnubin:/opt/homebrew/opt/curl/bin:/opt/homebrew/opt/findutils/libexec/gnubin:/opt/homebrew/opt/gnu-getopt/bin:/opt/homebrew/opt/gnu-sed/libexec/gnubin:/opt/homebrew/opt/gnu-tar/libexec/gnubin:/opt/homebrew/opt/grep/libexec/gnubin:/opt/homebrew/opt/make/libexec/gnubin:/opt/homebrew/opt/openssl/bin:/usr/local/opt/coreutils/libexec/gnubin:/usr/local/opt/curl/bin:/usr/local/opt/findutils/libexec/gnubin:/usr/local/opt/gnu-getopt/bin:/usr/local/opt/gnu-sed/libexec/gnubin:/usr/local/opt/gnu-tar/libexec/gnubin:/usr/local/opt/grep/libexec/gnubin:/usr/local/opt/make/libexec/gnubin:/usr/local/opt/openssl/bin:/opt/homebrew/bin:/usr/local/Homebrew/bin"
 path_docker="$HOME/.docker/bin"
 path_packages="$path_homebrew:$path_docker"
 {{- else if eq .chezmoi.os "linux" }}
@@ -7,4 +7,4 @@ path_packages=""
 {{- end }}
 path_default="/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin"
 
-export PATH="$HOME/.local/bin:$path_packages:$path_default"
+export PATH="$HOME/bin:$HOME/.local/bin:$path_packages:$path_default"

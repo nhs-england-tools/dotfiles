@@ -40,6 +40,7 @@ function install {
     git \
     git-crypt \
     git-secrets \
+    gnu-getopt \
     gnu-sed \
     gnu-tar \
     gnu-which \

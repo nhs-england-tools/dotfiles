@@ -27,6 +27,19 @@ function git-track() {
 # ==============================================================================
 # Miscellaneous functions
 
+# Generate a random string ('A-Za-z0-9') with the given length
+#
+# Usage:
+#   $ ./random 32
+#
+function random() {
+
+  chars='A-Za-z0-9'
+  length=${1:-32}
+
+  cat /dev/urandom | env LC_ALL=C tr -dc $chars | fold -w $length | head -n 1
+}
+
 # Convert a decimal number to a byte unit
 #
 # Usage:
