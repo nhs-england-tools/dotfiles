@@ -8,10 +8,20 @@
   // SEE: User settings ./assets/vscode/settings.json
   "settings": {
     "files.associations": {
+      "dot_aliases": "shellscript",
+      "dot_bash_profile": "shellscript",
+      "dot_bash_prompt": "shellscript",
+      "dot_bashrc": "shellscript",
+      "dot_exports": "shellscript",
+      "dot_functions": "shellscript",
       "dot_gitattributes": "properties",
       "dot_gitconfig.tmpl": "properties",
       "dot_gitignore.tmpl": "properties",
-      "dot_gitmessage": "properties"
+      "dot_gitmessage": "properties",
+      "dot_macos": "shellscript",
+      "dot_path.tmpl": "shellscript",
+      "dot_ubuntu": "shellscript",
+      "dot_zshrc.tmpl": "shellscript",
     }
   }
 }
