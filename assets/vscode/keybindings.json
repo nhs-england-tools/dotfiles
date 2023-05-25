@@ -101,5 +101,5 @@
   {
     "key": "ctrl+p",
     "command": "workbench.action.showAllEditorsByMostRecentlyUsed"
-  },
+  }
 ]

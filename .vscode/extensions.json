@@ -36,7 +36,5 @@
     "yzhang.dictionary-completion",
     "yzhang.markdown-all-in-one"
   ],
-  "unwantedRecommendations": [
-    "ms-vscode.makefile-tools"
-  ]
+  "unwantedRecommendations": ["ms-vscode.makefile-tools"]
 }

@@ -9,9 +9,7 @@
     "terraform-vars"
   ],
   "redhat.telemetry.enabled": false,
-  "todohighlight.keywords": [
-    "SEE:"
-  ],
+  "todohighlight.keywords": ["SEE:"],
   // General project settings
   "breadcrumbs.enabled": true,
   "editor.autoIndent": "full",
@@ -20,10 +18,7 @@
   "editor.formatOnSave": true,
   "editor.guides.bracketPairs": "active",
   "editor.renderWhitespace": "boundary",
-  "editor.rulers": [
-    80,
-    120
-  ],
+  "editor.rulers": [80, 120],
   "editor.suggestSelection": "recentlyUsedByPrefix",
   "explorer.autoReveal": true,
   "explorer.sortOrder": "default",
@@ -40,5 +35,8 @@
   "workbench.colorTheme": "GitHub Dark Dimmed",
   "workbench.editor.enablePreview": true,
   "workbench.iconTheme": "vscode-icons",
-  "workbench.tree.indent": 20
+  "workbench.tree.indent": 20,
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }
