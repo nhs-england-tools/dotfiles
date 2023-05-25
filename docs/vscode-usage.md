@@ -9,3 +9,4 @@
   - Extensions
   - Settings
   - Key bindings
+- GitHub Codespaces
