@@ -43,6 +43,7 @@ alias dvr='docker volume rm $(docker volume ls --quiet --filter dangling=true) 2
 # ==============================================================================
 # [tools]
 
+alias code='code --user-data-dir ~/.config/Code/'
 alias c='code --user-data-dir ~/.config/Code/ $(ls -1 *.code-workspace)'
 alias cz="chezmoi"
 
@@ -55,3 +56,4 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias ~="cd ~"
 alias -- -="cd -"
+alias ls="ls --color"
