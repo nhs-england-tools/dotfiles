@@ -71,6 +71,8 @@ function install-apps {
 
   # Install developer apps
   brew $install \
+    aws-vault \
+    awscli \
     bitwarden-cli \
     chezmoi \
     drawio \
