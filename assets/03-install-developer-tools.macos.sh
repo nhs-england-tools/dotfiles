@@ -19,6 +19,7 @@ function main {
   config-zsh
   config-git
   install-apps
+  install-tech-terraform
 }
 
 function config-zsh {
@@ -88,6 +89,17 @@ function install-apps {
     firefox \
     google-chrome \
     ||:
+}
+
+function install-tech-terraform() {
+
+  # Customise brew execution
+  HOMEBREW_NO_AUTO_UPDATE=1
+  is-arg-true "$REINSTALL" && install="reinstall --force" || install="install"
+
+  # Install developer apps
+  brew $install \
+    warrensbox/tap/tfswitch
 }
 
 # ==============================================================================
