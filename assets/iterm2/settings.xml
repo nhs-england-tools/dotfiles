@@ -1444,7 +1444,7 @@
     <key>NSWindow Frame ProfilesPanel</key>
     <string>385 837 735 388 0 0 2056 1285 </string>
     <key>NSWindow Frame iTerm Window 0</key>
-    <string>0 427 1290 858 0 0 2056 1285 </string>
+    <string>0 0 1728 1079 0 0 1728 1079 </string>
     <key>NSWindow Frame iTerm Window 1</key>
     <string>276 150 650 458 0 0 2056 1285 </string>
     <key>New Bookmarks</key>
@@ -2107,7 +2107,7 @@
         <key>Non-ASCII Anti Aliased</key>
         <true />
         <key>Normal Font</key>
-        <string>MesloLGS-NF-Regular 26</string>
+        <string>HackNFM-Regular 24</string>
         <key>Only The Default BG Color Uses Transparency</key>
         <true />
         <key>Open Toolbelt</key>
@@ -2205,15 +2205,16 @@
     </array>
     <key>NoSyncBFPRecents</key>
     <array>
+      <string>Hack Nerd Font Mono</string>
+      <string>Menlo</string>
       <string>Monaco</string>
-      <string>MesloLGS NF</string>
     </array>
     <key>NoSyncFrame_SharedPreferences</key>
     <dict>
       <key>screenFrame</key>
-      <string>{{0, 0}, {2056, 1329}}</string>
+      <string>{{0, 0}, {1728, 1117}}</string>
       <key>topLeft</key>
-      <string>{635, 1017}</string>
+      <string>{402, 792}</string>
     </dict>
     <key>NoSyncHaveUsedCopyMode</key>
     <true />
@@ -2226,7 +2227,7 @@
     <key>NoSyncLastSystemPythonVersionRequirement</key>
     <string>1.17</string>
     <key>NoSyncLaunchExperienceControllerRunCount</key>
-    <integer>10</integer>
+    <integer>14</integer>
     <key>NoSyncNextAnnoyanceTime</key>
     <real>706690695.16211605</real>
     <key>NoSyncPermissionToShowTip</key>
