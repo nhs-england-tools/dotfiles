@@ -2,6 +2,7 @@
   //
   // Extensions settings
   //
+  "aws.telemetry": false,
   "cSpell.language": "en,en-GB",
   "cSpell.enableFiletypes": [
     "dockerfile",
