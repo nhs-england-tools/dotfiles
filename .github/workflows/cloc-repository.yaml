@@ -1,4 +1,4 @@
-name: Count lines of code of this repository
+name: Count Lines of Code of This Repository
 
 on:
   workflow_call:
