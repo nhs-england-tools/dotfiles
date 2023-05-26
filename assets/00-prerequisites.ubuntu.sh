@@ -2,11 +2,11 @@
 
 set -e
 
-# Install prerequisites on Ubuntu
+# Meet prerequisites on Ubuntu
 #
 # Usage:
 #   $ source ./commons.sh
-#   $ ./00-install-prerequisites.ubuntu.sh
+#   $ ./00-prerequisites.ubuntu.sh
 #
 # Options:
 #   REINSTALL=true  # Attempts to reinstall the packages, default is `false`

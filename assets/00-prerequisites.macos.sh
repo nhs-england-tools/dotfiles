@@ -2,11 +2,11 @@
 
 set -e
 
-# Install prerequisites on macOS
+# Meet prerequisites on macOS
 #
 # Usage:
 #   $ source ./commons.sh
-#   $ ./00-install-prerequisites.macos.sh
+#   $ ./00-prerequisites.macos.sh
 #
 # Options:
 #   VERBOSE=true  # Show all the executed commands, default is `false`
