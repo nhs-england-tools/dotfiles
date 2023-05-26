@@ -16,10 +16,22 @@ set -e
 
 function main {
 
+  # Customise brew execution
+  export HOMEBREW_NO_AUTO_UPDATE=1
+  is-arg-true "$REINSTALL" && export install="reinstall --force" || export install="install"
+
   config-zsh
   config-git
-  install-apps
-  install-tech-terraform
+  install-tools-and-apps
+
+  tech-terraform-install
+  tech-terraform-configure
+  tech-python-install
+  tech-python-configure
+  tech-npm-install
+  tech-npm-configure
+  tech-golang-install
+  tech-golang-configure
 }
 
 function config-zsh {
@@ -28,11 +40,9 @@ function config-zsh {
   cat /etc/shells | grep $(brew --prefix)/bin/zsh > /dev/null 2>&1 || sudo sh -c "echo $(brew --prefix)/bin/zsh >> /etc/shells"
   chsh -s $(brew --prefix)/bin/zsh
   # Install oh-my-zsh
-  if (is-arg-true "$REINSTALL") then
-    rm -rf "$HOME/.oh-my-zsh"
-  fi
+  is-arg-true "$REINSTALL" && rm -rf "$HOME/.oh-my-zsh" ||:
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended ||:
   # Install powerlevel10k theme for zsh
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" "" --unattended ||:
   if [ -d "$HOME/.oh-my-zsh/custom/themes/powerlevel10k" ]; then
     (
       cd "$HOME/.oh-my-zsh/custom/themes/powerlevel10k"
@@ -41,34 +51,21 @@ function config-zsh {
   else
     git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$HOME/.oh-my-zsh/custom/themes/powerlevel10k" ||:
   fi
-  # Install vscode extensions
-  is-arg-true "$REINSTALL" && vs_ext_force="--force" || vs_ext_force=""
-  for file in $(cat "${CHEZMOI_SOURCE_DIR:-$(chezmoi source-path)}/.vscode/extensions.json" | jq '.recommendations[]' --raw-output); do
-    code $vs_ext_force --install-extension $file ||:
-  done
-  # Install iTerm theme
-  defaults import \
-    com.googlecode.iterm2 \
-    "${CHEZMOI_SOURCE_DIR:-$(chezmoi source-path)}/assets/iterm2/settings.xml"
 }
 
 function config-git {
 
-  mkdir -p ~/.gnupg
-  sed -i '/^pinentry-program/d' ~/.gnupg/gpg-agent.conf 2>/dev/null ||:
-  echo "pinentry-program $(whereis -q pinentry)" >> ~/.gnupg/gpg-agent.conf
-  sed -i '/^default-cache-ttl/d' ~/.gnupg/gpg-agent.conf
-  echo "default-cache-ttl 10800" >> ~/.gnupg/gpg-agent.conf
-  sed -i '/^max-cache-ttl/d' ~/.gnupg/gpg-agent.conf
-  echo "max-cache-ttl 10800" >> ~/.gnupg/gpg-agent.conf
+  mkdir -p "$HOME/.gnupg"
+  sed -i '/^pinentry-program/d' "$HOME/.gnupg/gpg-agent.conf" 2>/dev/null ||:
+  echo "pinentry-program $(whereis -q pinentry)" >> "$HOME/.gnupg/gpg-agent.conf"
+  sed -i '/^default-cache-ttl/d' "$HOME/.gnupg/gpg-agent.conf"
+  echo "default-cache-ttl 10800" >> "$HOME/.gnupg/gpg-agent.conf"
+  sed -i '/^max-cache-ttl/d' "$HOME/.gnupg/gpg-agent.conf"
+  echo "max-cache-ttl 10800" >> "$HOME/.gnupg/gpg-agent.conf"
   gpgconf --kill gpg-agent
 }
 
-function install-apps {
-
-  # Customise brew execution
-  HOMEBREW_NO_AUTO_UPDATE=1
-  is-arg-true "$REINSTALL" && install="reinstall --force" || install="install"
+function install-tools-and-apps {
 
   # Install developer apps
   brew $install \
@@ -87,19 +84,102 @@ function install-apps {
     brave-browser \
     docker \
     firefox \
+    font-hack-nerd-font \
     google-chrome \
     ||:
+
+  # Install vscode extensions
+  is-arg-true "$REINSTALL" && vs_ext_force="--force" || vs_ext_force=""
+  for file in $(cat "${CHEZMOI_SOURCE_DIR:-$(chezmoi source-path)}/.vscode/extensions.json" | jq '.recommendations[]' --raw-output); do
+    code $vs_ext_force --install-extension $file ||:
+  done
+  # Install iterm theme
+  defaults import \
+    com.googlecode.iterm2 \
+    "${CHEZMOI_SOURCE_DIR:-$(chezmoi source-path)}/assets/iterm2/settings.xml"
+
+  # Install asdf, SEE: https://asdf-vm.com/
+  if [ -d "$HOME/.asdf" ]; then
+    (
+      cd "$HOME/.asdf"
+      git pull
+    )
+  else
+    git clone --depth=1 https://github.com/asdf-vm/asdf.git "$HOME/.asdf" ||:
+  fi
+  asdf plugin update --all
 }
 
-function install-tech-terraform() {
+function tech-terraform-install() {
 
-  # Customise brew execution
-  HOMEBREW_NO_AUTO_UPDATE=1
-  is-arg-true "$REINSTALL" && install="reinstall --force" || install="install"
+  asdf plugin add terraform ||:
+  asdf install terraform latest
+  asdf global terraform latest
+}
 
-  # Install developer apps
-  brew $install \
-    warrensbox/tap/tfswitch
+function tech-terraform-configure() {
+
+  :
+  # TODO: Install dev tools for terraform
+  # brew $install \
+  #   warrensbox/tap/tfswitch
+}
+
+function tech-python-install() {
+
+  asdf plugin add python ||:
+  asdf install python latest
+  asdf global python latest
+}
+
+function tech-python-configure() {
+
+  python -m ensurepip
+  python -m pip install --upgrade pip
+
+  # TODO: Install dev tools for python
+  # brew $install \
+  #   pyenv \
+  #   pyenv-virtualenv \
+  #   python \
+  #   virtualenv \
+  #   ||:
+  # python -m pip install \
+  #   bandit \
+  #   black \
+  #   bpython \
+  #   coverage \
+  #   flake8 \
+  #   mypy \
+  #   prospector \
+  #   pycodestyle \
+  #   pylama \
+  #   pylint \
+  #   pytest
+}
+
+function tech-npm-install() {
+
+  asdf plugin add nodejs ||:
+  asdf install nodejs latest
+  asdf global nodejs latest
+}
+
+function tech-npm-configure() {
+
+  npm install --global yarn
+}
+
+function tech-golang-install() {
+
+  asdf plugin add golang ||:
+  asdf install golang latest
+  asdf global golang latest
+}
+
+function tech-golang-configure() {
+
+  :
 }
 
 # ==============================================================================

@@ -26,7 +26,8 @@
       "dot_screenrc": "properties",
       "dot_ubuntu": "shellscript",
       "dot_wgetrc": "properties",
-      "dot_zshrc.tmpl": "shellscript"
+      "dot_zshrc.tmpl": "shellscript",
+      "run_onchange_setup.sh.tmpl": "shellscript"
     }
   }
 }

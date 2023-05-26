@@ -16,14 +16,14 @@ set -e
 
 function main {
 
+  # Customise brew execution
+  export HOMEBREW_NO_AUTO_UPDATE=1
+  is-arg-true "$REINSTALL" && export install="reinstall --force" || export install="install"
+
   install
 }
 
 function install {
-
-  # Customise brew execution
-  HOMEBREW_NO_AUTO_UPDATE=1
-  is-arg-true "$REINSTALL" && install="reinstall --force" || install="install"
 
   # Install packages for consistent GNU/Linux-like CLI experience on macOS
   brew $install \
@@ -32,9 +32,11 @@ function install {
     bash \
     binutils \
     coreutils \
+    ctop \
     curl \
     diff-so-fancy \
     diffutils \
+    dive \
     findutils \
     gawk \
     git \
@@ -52,10 +54,12 @@ function install {
     jq \
     less \
     make \
+    neovim \
     openssl \
     readline \
     ripgrep \
     screen \
+    shellcheck \
     tmux \
     tree \
     watch \

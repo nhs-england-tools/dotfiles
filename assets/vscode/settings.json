@@ -1,5 +1,7 @@
 {
+  //
   // Extensions settings
+  //
   "cSpell.language": "en,en-GB",
   "cSpell.enableFiletypes": [
     "dockerfile",
@@ -10,7 +12,9 @@
   ],
   "redhat.telemetry.enabled": false,
   "todohighlight.keywords": ["SEE:"],
+  //
   // General project settings
+  //
   "breadcrumbs.enabled": true,
   "editor.autoIndent": "full",
   "editor.bracketPairColorization.enabled": true,
@@ -28,6 +32,20 @@
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
   "files.trimTrailingWhitespace": true,
+  "files.watcherExclude": {
+    "**/.git": true,
+    "**/log": true,
+    "**/node_modules": true,
+    "**/target": true,
+    "**/tmp": true
+  },
+  "search.exclude": {
+    "**/.git": true,
+    "**/log": true,
+    "**/node_modules": true,
+    "**/target": true,
+    "**/tmp": true
+  },
   "terminal.integrated.fontFamily": "Hack Nerd Font",
   "window.newWindowDimensions": "maximized",
   "window.title": "${activeEditorMedium}${separator}${rootName}${separator}${rootPath}",
@@ -36,6 +54,9 @@
   "workbench.editor.enablePreview": true,
   "workbench.iconTheme": "vscode-icons",
   "workbench.tree.indent": 20,
+  //
+  // Files settings
+  //
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   }

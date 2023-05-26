@@ -16,14 +16,14 @@ set -e
 
 function main {
 
+  # Customise brew execution
+  export HOMEBREW_NO_AUTO_UPDATE=1
+  is-arg-true "$REINSTALL" && export install="reinstall --force" || export install="install"
+
   install
 }
 
 function install {
-
-  # Customise brew execution
-  HOMEBREW_NO_AUTO_UPDATE=1
-  is-arg-true "$REINSTALL" && install="reinstall --force" || install="install"
 
   # Install developer apps
   brew $install \

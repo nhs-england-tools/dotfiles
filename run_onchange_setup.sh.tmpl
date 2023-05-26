@@ -2,8 +2,30 @@
 
 set -e
 
-mkdir -p $HOME/{.aws,.azure,.cache,.config,.docker,.gnupg,.kube,.local,.ssh,bin,Projects}
-chmod 700 $HOME/{.aws,.azure,.cache,.config,.docker,.gnupg,.kube,.local,.ssh,bin,Projects}
+mkdir -p \
+  $HOME/.aws \
+  $HOME/.azure \
+  $HOME/.cache \
+  $HOME/.config \
+  $HOME/.docker \
+  $HOME/.gnupg \
+  $HOME/.kube \
+  $HOME/.local \
+  $HOME/.ssh \
+  $HOME/bin \
+  $HOME/Projects
+chmod 700 \
+  $HOME/.aws \
+  $HOME/.azure \
+  $HOME/.cache \
+  $HOME/.config \
+  $HOME/.docker \
+  $HOME/.gnupg \
+  $HOME/.kube \
+  $HOME/.local \
+  $HOME/.ssh \
+  $HOME/bin \
+  $HOME/Projects
 
 eval $(source "$HOME/.local/bin/detect-operating-system.sh")
 source "$HOME/.path"
