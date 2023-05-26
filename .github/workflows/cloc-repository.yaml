@@ -12,4 +12,4 @@ jobs:
           fetch-depth: 0
       - run: |
           export FORMAT=default
-          ./scripts/githooks/cloc-repository.sh
+          ./scripts/cloc-repository.sh
