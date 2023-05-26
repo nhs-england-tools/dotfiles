@@ -7,7 +7,8 @@
   - [Configuration](#configuration)
   - [Signing commits](#signing-commits)
     - [Troubleshooting](#troubleshooting)
-  - [Additional useful settings and commands](#additional-useful-settings-and-commands)
+  - [Additional settings](#additional-settings)
+  - [Useful commands](#useful-commands)
 
 ## Configuration
 
@@ -128,7 +129,7 @@ sed -i '/^export GPG_TTY/d' ~/.exports
 echo "export GPG_TTY=\$TTY" >> ~/.exports
 ```
 
-## Additional useful settings and commands
+## Additional settings
 
 Configure caching git commit signature passphrase for 3 hours
 
@@ -162,11 +163,23 @@ The minimum required scopes are 'repo', 'read:org'.
 ✓ Logged in as your-github-handle
 ```
 
+## Useful commands
+
 Add your changes, create a signed commit, update from and push to remote
 
 ```shell
 git add .
-git commit -S -m "This is a signed commit message"
+git commit -S -m "Create a signed commit"
 git pull
 git push
+```
+
+Squash all commits on branch as one
+
+```shell
+git checkout your-branch-name
+git reset $(git merge-base main $(git branch --show-current))
+git add .
+git commit -S -m "Create just one commit instead"
+git push --force-with-lease
 ```
