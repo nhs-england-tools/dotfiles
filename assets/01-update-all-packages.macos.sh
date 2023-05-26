@@ -27,7 +27,8 @@ function install {
   # Install a command line interface for the Mac App Store
   which mas > /dev/null 2>&1 || brew install mas
   # Install Xcode
-  sudo xcodebuild -license accept ||:; mas list | grep Xcode || ( mas install $(mas search Xcode | head -n 1 | awk '{ print $1 }') && mas upgrade $(mas list | grep Xcode | awk '{ print $1 }') ) ||:
+  mas list | grep Xcode || ( mas install $(mas search Xcode | head -n 1 | awk '{ print $1 }') && mas upgrade $(mas list | grep Xcode | awk '{ print $1 }') ) ||:
+  sudo xcodebuild -license accept ||:
   # Install Rosetta 2 on Apple Silicon
   [ "$SYSTEM_ARCH_NAME" == arm64 ] && sudo softwareupdate --install-rosetta --agree-to-license ||:
   # Update Homebrew
