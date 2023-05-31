@@ -32,6 +32,8 @@ function main {
   tech-npm-configure
   tech-golang-install
   tech-golang-configure
+  tech-java-install
+  tech-java-configure
 }
 
 function config-zsh {
@@ -45,7 +47,7 @@ function config-git {
 
   mkdir -p "$HOME/.gnupg"
   sed -i '/^pinentry-program/d' "$HOME/.gnupg/gpg-agent.conf" 2>/dev/null ||:
-  echo "pinentry-program $(whereis -q pinentry)" >> "$HOME/.gnupg/gpg-agent.conf"
+  echo "pinentry-program $(whereis -q pinentry-mac)" >> "$HOME/.gnupg/gpg-agent.conf"
   sed -i '/^default-cache-ttl/d' "$HOME/.gnupg/gpg-agent.conf"
   echo "default-cache-ttl 10800" >> "$HOME/.gnupg/gpg-agent.conf"
   sed -i '/^max-cache-ttl/d' "$HOME/.gnupg/gpg-agent.conf"
