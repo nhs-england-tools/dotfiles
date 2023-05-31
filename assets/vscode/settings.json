@@ -41,6 +41,7 @@
     "**/tmp": true
   },
   "git.autofetch": true,
+  "git.confirmSync": false,
   "git.enableCommitSigning": true,
   "search.exclude": {
     "**/.git": true,
