@@ -56,6 +56,7 @@ function install {
     make \
     neovim \
     openssl \
+    pinentry-mac \
     readline \
     ripgrep \
     screen \
