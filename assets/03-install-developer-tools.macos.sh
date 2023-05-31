@@ -66,6 +66,7 @@ function install-tools-and-apps {
     drawio \
     gh \
     iterm2 \
+    kubernetes-cli \
     obsidian \
     visual-studio-code \
     ||:
