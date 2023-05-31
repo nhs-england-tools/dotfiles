@@ -107,10 +107,12 @@ function tech-terraform-install() {
 
 function tech-terraform-configure() {
 
-  :
+  # SEE: https://github.com/asdf-community/asdf-hashicorp
+
   # TODO: Install dev tools for terraform
   # brew $install \
   #   warrensbox/tap/tfswitch
+  :
 }
 
 function tech-python-install() {
@@ -121,6 +123,8 @@ function tech-python-install() {
 }
 
 function tech-python-configure() {
+
+  # SEE: https://github.com/asdf-community/asdf-python
 
   python -m ensurepip
   python -m pip install --upgrade pip
@@ -155,6 +159,8 @@ function tech-npm-install() {
 
 function tech-npm-configure() {
 
+  # SEE: https://github.com/asdf-vm/asdf-nodejs
+
   npm install --global yarn
 }
 
@@ -167,6 +173,21 @@ function tech-golang-install() {
 
 function tech-golang-configure() {
 
+  # SEE: https://github.com/kennyp/asdf-golang
+
+  :
+}
+
+function tech-java-install() {
+
+  asdf plugin add java ||:
+  asdf install java latest:adoptopenjdk
+  asdf global java latest:adoptopenjdk
+}
+
+function tech-java-configure() {
+
+  # SEE: https://github.com/halcyon/asdf-java
   :
 }
 
