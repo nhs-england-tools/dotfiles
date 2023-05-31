@@ -20,9 +20,11 @@ function main {
 
 function configure {
 
-  defaults write -g com.apple.trackpad.scaling -int 3
-  defaults write -g InitialKeyRepeat -int 15
-  defaults write -g KeyRepeat -int 2
+  # TODO: This has to be tested
+  # defaults write -g com.apple.trackpad.scaling -int 3
+  # defaults write -g InitialKeyRepeat -int 15
+  # defaults write -g KeyRepeat -int 2
+  :
 }
 
 # ==============================================================================

@@ -25,15 +25,17 @@ function main {
 
 function install {
 
-  # Install developer apps
-  brew $install \
-    alt-tab \
-    appcleaner \
-    dozer \
-    google-drive \
-    keepingyouawake \
-    rectangle \
-    ||:
+  # TODO: Decide if this is needed
+  # # Install developer apps
+  # brew $install \
+  #   alt-tab \
+  #   appcleaner \
+  #   dozer \
+  #   google-drive \
+  #   keepingyouawake \
+  #   rectangle \
+  #   ||:
+  :
 }
 
 # ==============================================================================

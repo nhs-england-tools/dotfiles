@@ -25,14 +25,16 @@ function main {
 
 function install {
 
-  # Install developer apps
-  brew $install \
-    avast-security \
-    microsoft-office \
-    microsoft-teams \
-    slack \
-    zoom \
-    ||:
+  # TODO: Decide if this is needed
+  # # Install developer apps
+  # brew $install \
+  #   avast-security \
+  #   microsoft-office \
+  #   microsoft-teams \
+  #   slack \
+  #   zoom \
+  #   ||:
+  :
 }
 
 # ==============================================================================
