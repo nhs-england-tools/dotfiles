@@ -40,6 +40,7 @@
     "**/target": true,
     "**/tmp": true
   },
+  "git.autofetch": true,
   "git.enableCommitSigning": true,
   "search.exclude": {
     "**/.git": true,
