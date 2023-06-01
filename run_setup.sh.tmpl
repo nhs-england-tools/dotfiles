@@ -30,6 +30,14 @@ chmod 700 \
 eval $(source "$HOME/.local/bin/detect-operating-system.sh")
 source "$HOME/.path"
 
+# Load dotfiles
+eval $(source "$HOME/.local/bin/detect-operating-system.sh")
+for file in $HOME/.{path,exports,extra,$SYSTEM_DIST}; do
+  [ -f "$file" ] && source "$file"
+done
+unset file;
+
+# Run the setup scripts
 source {{ joinPath .chezmoi.sourceDir "./assets/commons.sh" }}
 for file in {{ joinPath .chezmoi.sourceDir "./assets/*.$SYSTEM_DIST.sh" }}; do
   print-header "Running the $file script ..."

@@ -15,7 +15,3 @@ export LC_ALL="en_GB.UTF-8"
 
 # Do not clear screen after quitting a manual page
 export MANPAGER="less -X"
-
-# Ensure compilers can find zlib
-export LDFLAGS="-L/opt/homebrew/opt/zlib/lib"
-export CPPFLAGS="-I/opt/homebrew/opt/zlib/include"
