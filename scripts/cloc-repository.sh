@@ -13,7 +13,7 @@ set -e
 
 # ==============================================================================
 
-image=ghcr.io/make-ops-tools/gocloc:latest
+image_version=latest
 
 # ==============================================================================
 
@@ -21,7 +21,7 @@ function main() {
 
   docker run --rm --platform linux/amd64 \
     --volume=$PWD:/workdir \
-    $image \
+    ghcr.io/make-ops-tools/gocloc:$image_version \
       --output-type=${FORMAT:-default} .
 }
 
