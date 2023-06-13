@@ -2,26 +2,27 @@ name: CI/CD Pipeline
 
 on:
   push:
-    branches:
-      - main
   pull_request:
     branches:
       - main
+    types: [opened, synchronize, reopened]
 
 jobs:
-  get-datetime:
+  get-metadata:
     runs-on: ubuntu-latest
     outputs:
-      datetime: ${{ steps.datetime.outputs.datetime }}
-      timestamp: ${{ steps.datetime.outputs.timestamp }}
-      epoch: ${{ steps.datetime.outputs.epoch }}
+      build_datetime: ${{ steps.metadata.outputs.build_datetime }}
+      build_timestamp: ${{ steps.metadata.outputs.build_timestamp }}
+      build_epoch: ${{ steps.metadata.outputs.build_epoch }}
     steps:
-      - id: datetime
+      - id: metadata
         run: |
           datetime=$(date -u +'%Y-%m-%dT%H:%M:%S%z')
-          echo "datetime=$datetime" >> $GITHUB_OUTPUT
-          echo "timestamp=$(date --date=$datetime -u +'%Y%m%d%H%M%S')" >> $GITHUB_OUTPUT
-          echo "epoch=$(date --date=$datetime -u +'%s')" >> $GITHUB_OUTPUT
+          echo "build_datetime=$datetime" >> $GITHUB_OUTPUT
+          echo "build_timestamp=$(date --date=$datetime -u +'%Y%m%d%H%M%S')" >> $GITHUB_OUTPUT
+          echo "build_epoch=$(date --date=$datetime -u +'%s')" >> $GITHUB_OUTPUT
+  scan-secrets:
+    uses: ./.github/workflows/scan-secrets.yaml
   check-file-format:
     uses: ./.github/workflows/check-file-format.yaml
   check-markdown-format:
@@ -31,15 +32,21 @@ jobs:
   cicd-pipeline-test:
     runs-on: ubuntu-latest
     needs:
-      [get-datetime, check-file-format, check-markdown-format, cloc-repository]
+      [
+        get-metadata,
+        scan-secrets,
+        check-file-format,
+        check-markdown-format,
+        cloc-repository,
+      ]
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v3
       - name: List Variables
         run: |
-          export BUILD_DATETIME="${{ needs.get-datetime.outputs.datetime }}"
-          export BUILD_TIMESTAMP="${{ needs.get-datetime.outputs.timestamp }}"
-          export BUILD_EPOCH="${{ needs.get-datetime.outputs.epoch }}"
+          export BUILD_DATETIME="${{ needs.get-metadata.outputs.build_datetime }}"
+          export BUILD_TIMESTAMP="${{ needs.get-metadata.outputs.build_timestamp }}"
+          export BUILD_EPOCH="${{ needs.get-metadata.outputs.build_epoch }}"
           make list-variables
       # - name: Run Installation Test
       #   run: |
