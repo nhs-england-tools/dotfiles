@@ -26,7 +26,7 @@ set -e
 
 # ==============================================================================
 
-image_digest=3e42db866de0fc813f74450f1065eab9066607fed34eb119d0db6f4e640e6b8d # v0.34.0
+image_version=v0.34.0@sha256:230b1e0e0fa1c7dd6261e025cacf6761ac5ba3557a6a919eec910d731817ff28
 
 # ==============================================================================
 
@@ -34,18 +34,19 @@ function main() {
 
   if is-arg-true "$ALL_FILES"; then
     # Check all files
-    files="*.md"
+    files="$(find ./ -type f -name "*.md")"
   else
     # Check changed files only
-    files="$(git diff --diff-filter=ACMRT --name-only ${BRANCH_NAME:-origin/main} "*.md")"
+    files="$( (git diff --diff-filter=ACMRT --name-only ${BRANCH_NAME:-origin/main} "*.md"; git diff --name-only "*.md") | sort | uniq )"
   fi
 
   if [ -n "$files" ]; then
     docker run --rm --platform linux/amd64 \
       --volume=$PWD:/workdir \
-      ghcr.io/igorshubovych/markdownlint-cli@sha256:$image_digest \
+      ghcr.io/igorshubovych/markdownlint-cli:$image_version \
         $files \
-        --disable MD013 MD033
+        --disable MD013 MD033 \
+        --ignore .github/PULL_REQUEST_TEMPLATE.md
   fi
 }
 

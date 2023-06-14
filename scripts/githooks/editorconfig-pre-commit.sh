@@ -27,7 +27,7 @@ set +e
 # ==============================================================================
 
 exit_code=0
-image_digest=0f8f8dd4f393d29755bef2aef4391d37c34e358d676e9d66ce195359a9c72ef3 # 2.7.0
+image_version=2.7.0@sha256:0f8f8dd4f393d29755bef2aef4391d37c34e358d676e9d66ce195359a9c72ef3
 
 # ==============================================================================
 
@@ -38,24 +38,24 @@ function main() {
     # Check all files
     docker run --rm --platform linux/amd64 \
       --volume=$PWD:/check \
-      mstruebing/editorconfig-checker@sha256:$image_digest \
+      mstruebing/editorconfig-checker:$image_version \
         ec \
           --exclude '.git/'
 
   else
 
     # Check changed files only
-    changed_files=$(git diff --diff-filter=ACMRT --name-only ${BRANCH_NAME:-origin/main})
-    if [ -n "$changed_files" ]; then
+    files=$( (git diff --diff-filter=ACMRT --name-only ${BRANCH_NAME:-origin/main}; git diff --name-only) | sort | uniq )
+    if [ -n "$files" ]; then
       while read file; do
         docker run --rm --platform linux/amd64 \
           --volume=$PWD:/check \
-          mstruebing/editorconfig-checker@sha256:$image_digest \
+          mstruebing/editorconfig-checker:$image_version \
             ec \
               --exclude '.git/' \
               "$file"
         [ $? != 0 ] && exit_code=1 ||:
-      done < <(echo "$changed_files")
+      done < <(echo "$files")
     fi
 
   fi
