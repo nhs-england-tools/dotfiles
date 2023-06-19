@@ -13,6 +13,7 @@ update-lib-detect-os: # Update the Detect Operating System libarary from source
 clean: # Clean development environment
 	rm -rf \
 		~/.config/chezmoi \
+		./assets/iterm2/com.googlecode.* \
 		./bin/chezmoi
 
 # ==============================================================================

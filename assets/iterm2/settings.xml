@@ -1438,13 +1438,13 @@
       <integer>1</integer>
     </dict>
     <key>NSWindow Frame NSColorPanel</key>
-    <string>0 81 224 278 0 0 2056 1285 </string>
+    <string>3840 81 224 278 3840 0 2160 3815 </string>
     <key>NSWindow Frame NSNavPanelAutosaveName</key>
     <string>628 627 800 448 0 0 2056 1285 </string>
     <key>NSWindow Frame ProfilesPanel</key>
     <string>385 837 735 388 0 0 2056 1285 </string>
     <key>NSWindow Frame iTerm Window 0</key>
-    <string>0 0 1728 1079 0 0 1728 1079 </string>
+    <string>3839 26 2160 1881 3840 0 2160 3815 </string>
     <key>NSWindow Frame iTerm Window 1</key>
     <string>276 150 650 458 0 0 2056 1285 </string>
     <key>New Bookmarks</key>
@@ -2194,7 +2194,7 @@
         <key>Visual Bell</key>
         <true />
         <key>Window Type</key>
-        <integer>15</integer>
+        <integer>0</integer>
         <key>Working Directory</key>
         <string>~/Projects</string>
       </dict>
@@ -2212,9 +2212,9 @@
     <key>NoSyncFrame_SharedPreferences</key>
     <dict>
       <key>screenFrame</key>
-      <string>{{0, 0}, {1728, 1117}}</string>
+      <string>{{3840, 0}, {2160, 3840}}</string>
       <key>topLeft</key>
-      <string>{402, 792}</string>
+      <string>{4458, 2193}</string>
     </dict>
     <key>NoSyncHaveUsedCopyMode</key>
     <true />
@@ -2223,11 +2223,11 @@
     <key>NoSyncInstallationId</key>
     <string>127CA967-1134-4145-A539-9C51A3F64418</string>
     <key>NoSyncLastOSVersion</key>
-    <string>Version 13.4 (Build 22F66)</string>
+    <string>Version 13.5 (Build 22G5038d)</string>
     <key>NoSyncLastSystemPythonVersionRequirement</key>
     <string>1.17</string>
     <key>NoSyncLaunchExperienceControllerRunCount</key>
-    <integer>14</integer>
+    <integer>15</integer>
     <key>NoSyncNextAnnoyanceTime</key>
     <real>706690695.16211605</real>
     <key>NoSyncPermissionToShowTip</key>
@@ -3101,6 +3101,8 @@
       <key>Red Component</key>
       <real>0.14901961386203766</real>
     </dict>
+    <key>SeparateStatusBarsPerPane</key>
+    <false />
     <key>SeparateWindowTitlePerTab</key>
     <true />
     <key>SoundForEsc</key>
@@ -3122,6 +3124,8 @@
     <false />
     <key>VisualIndicatorForEsc</key>
     <false />
+    <key>WindowNumber</key>
+    <true />
     <key>iTerm Version</key>
     <string>3.4.19</string>
   </dict>
