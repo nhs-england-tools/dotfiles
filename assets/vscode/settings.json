@@ -61,6 +61,9 @@
   //
   // Files settings
   //
+  "[dockerfile]": {
+    "editor.formatOnSave": false
+  },
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
