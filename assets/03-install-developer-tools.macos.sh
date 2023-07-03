@@ -28,8 +28,8 @@ function main {
   tech-terraform-configure
   tech-python-install
   tech-python-configure
-  tech-npm-install
-  tech-npm-configure
+  tech-nodejs-install
+  tech-nodejs-configure
   tech-golang-install
   tech-golang-configure
   tech-java-install
@@ -129,6 +129,10 @@ function tech-python-configure() {
 
   # SEE: https://github.com/asdf-community/asdf-python
 
+  asdf plugin add poetry ||:
+  asdf install poetry latest
+  asdf global poetry latest
+
   python -m ensurepip
   python -m pip install --upgrade pip
 
@@ -153,18 +157,18 @@ function tech-python-configure() {
   #   pytest
 }
 
-function tech-npm-install() {
+function tech-nodejs-install() {
 
   asdf plugin add nodejs ||:
   asdf install nodejs latest
   asdf global nodejs latest
 }
 
-function tech-npm-configure() {
+function tech-nodejs-configure() {
 
-  # SEE: https://github.com/asdf-vm/asdf-nodejs
-
-  npm install --global yarn
+  asdf plugin add yarn ||:
+  asdf install yarn latest
+  asdf global yarn latest
 }
 
 function tech-golang-install() {
