@@ -6,7 +6,7 @@ set -e
 #
 # Usage:
 #   $ source ./commons.sh
-#   $ ./06-configure-system.ubuntu.sh
+#   $ ./40-configure-system.ubuntu.sh
 #
 # Options:
 #   VERBOSE=true  # Show all the executed commands, default is `false`

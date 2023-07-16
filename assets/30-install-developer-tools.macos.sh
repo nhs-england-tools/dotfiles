@@ -6,7 +6,7 @@ set -e
 #
 # Usage:
 #   $ source ./commons.sh
-#   $ ./03-install-developer-tools.macos.sh
+#   $ ./30-install-developer-tools.macos.sh
 #
 # Options:
 #   REINSTALL=true  # Attempts to reinstall the packages, default is `false`

@@ -6,7 +6,7 @@ set -e
 #
 # Usage:
 #   $ source ./commons.sh
-#   $ ./02-install-base-packages.macos.sh
+#   $ ./20-install-base-packages.macos.sh
 #
 # Options:
 #   REINSTALL=true  # Attempts to reinstall the packages, default is `false`
