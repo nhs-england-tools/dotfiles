@@ -2,171 +2,128 @@
 
 [![CI/CD Pipeline](https://github.com/make-ops-tools/dotfiles/actions/workflows/cicd-pipeline.yaml/badge.svg)](https://github.com/make-ops-tools/dotfiles/actions/workflows/cicd-pipeline.yaml)
 
-Dotfiles are configuration files on `*NIX` systems and are used to customise the behaviour and appearance of common applications, command-line tools and shell. They can contain various predefined settings, functions, aliases, environment variables and other configurations that affect how programs behave and interact with the system.
+Dotfiles are configuration files on `*NIX` (including macOS, Windows WSL and Linux) systems and are used to customise the behaviour and appearance of common applications, command-line tools and shell. They can contain various predefined settings, functions, aliases, environment variables and other configurations that affect how programs behave and interact with the system.
 
 The aim of such a setup is to ensure predictable and consistent behaviour across environments and workstations as well as to improve the engineering efficiency which results in better [Developer Experience (DX)](https://www.thoughtworks.com/en-gb/insights/blog/why-you-should-invest-good-developer-experience-today), allowing to implement mature developer workflows that integrate well with an [Internal Developer Platform (IDP)](https://www.thoughtworks.com/en-gb/insights/blog/devops/better-developer-platforms-key-better-digital-products).
 
-Here is _[Your unofficial guide to dotfiles on GitHub](https://dotfiles.github.io/)_
+Here is an _[Unofficial guide to dotfiles on GitHub](https://dotfiles.github.io/)_
 
 ## Table of Contents
 
 - [Make Ops Tools - Dotfiles](#make-ops-tools---dotfiles)
   - [Table of Contents](#table-of-contents)
   - [Installation](#installation)
-    - [Archive your current dotfiles configuration](#archive-your-current-dotfiles-configuration)
-    - [Apply new configuration via `chezmoi`](#apply-new-configuration-via-chezmoi)
-    - [Use the installation script from this repository](#use-the-installation-script-from-this-repository)
-    - [Prerequisites](#prerequisites)
+    - [Archive your home directory](#archive-your-home-directory)
+    - [Apply new configuration](#apply-new-configuration)
+    - [Set up a password manager](#set-up-a-password-manager)
+  - [Structure](#structure)
+  - [Features](#features)
   - [Usage](#usage)
-    - [Add and track a new file](#add-and-track-a-new-file)
     - [Store changes in your own repository](#store-changes-in-your-own-repository)
-  - [Architecture](#architecture)
-    - [Project structure](#project-structure)
-    - [Project configuration](#project-configuration)
-  - [Contributing](#contributing)
-    - [Currently supported features](#currently-supported-features)
-    - [Resources](#resources)
+  - [Resources](#resources)
   - [Contacts](#contacts)
   - [Licence](#licence)
 
 ## Installation
 
-This `dotfiles` repository is configured and managed by the `chezmoi` project. [chezmoi](https://www.chezmoi.io/), pronounced _/ʃeɪ mwa/ (shay-moi)_ is currently the [most complete and most hackable](https://www.chezmoi.io/comparison-table/) dotfiles manager out there. Please, follow the [installation guide](https://www.chezmoi.io/install/#one-line-package-install) specific to your operating system before proceeding.
+This dotfiles repository is configured and managed by the `chezmoi` project. [chezmoi](https://www.chezmoi.io/), pronounced _/ʃeɪ mwa/ (shay-moi)_ is currently the [most complete and most hackable](https://www.chezmoi.io/comparison-table/) dotfiles manager out there.
 
-### Archive your current dotfiles configuration
+### Archive your home directory
 
 Prior to applying any changes to your home directory, create a backup of your current configuration. This command creates an archive file in the temporary directory that can be used later to restore the configuration, if needed.
 
 ```shell
-chezmoi archive --output=/tmp/dotfiles.tar.gz
+tar -czvf /tmp/home-directory-backup.tar.gz -C ~ .
 ```
 
-### Apply new configuration via `chezmoi`
-
-The following instruction clones [\$GITHUB_ORG/dotfiles](https://github.com/make-ops-tools/dotfiles) repository into the `~/.local/share/chezmoi/` directory and next applies changes accordingly, to your home directory `~/`. During the setup it prompts you to provide configuration options like Git committer name and email address, etc.
+You might be prompted by your terminal application to grant access permissions, allowing the process to access files in your home directory. However, if the above takes too long as it archives all the files in your home directory an alternative would be to use `chezmoi` to backup only the dotiles. Please, follow the [installation guide](https://www.chezmoi.io/install/#one-line-package-install) specific to your operating system before proceeding.
 
 ```shell
-chezmoi init --apply $GITHUB_ORG # "make-ops-tools"
+chezmoi archive --output=/tmp/dotfiles-backup.tar.gz
 ```
 
-### Use the installation script from this repository
+### Apply new configuration
 
-You can use the convenience script to install the dotfiles on any machine with a single command. Simply run the following in your terminal
+The following instruction clones the [dotfiles](https://github.com/make-ops-tools/dotfiles) repository into the `~/.local/share/chezmoi/` directory and next applies changes accordingly, to your home directory `~/`. During the setup it prompts you to provide configuration options like Git committer name and email address, etc.
 
 ```shell
-bash -c "$(curl -fsLS get.chezmoi.io)" -- init --apply $GITHUB_ORG # "make-ops-tools"
+bash -c "$(curl -fsLS get.chezmoi.io)" -- init --apply "make-ops-tools"
 ```
 
-or clone the repository ...
+You can find more information on how `chezmoi` works [here](./docs/guides/chezmoi-usage.md).
 
-```shell
-git clone https://github.com/make-ops-tools/dotfiles.git ~/.local/share/chezmoi
-```
+### Set up a password manager
 
-Installation flow diagram
+To store some of the configuration options, `chezmoi` can use a password manager. Therefore, after the dotfiles installation, please follow the [Bitwarden setup](./docs/guides/bitwarden-usage.md) guide to improve the installation experience for any subsequent run.
 
-```mermaid
-sequenceDiagram
-  autonumber
-  participant home directory
-  participant working copy
-  participant local repo
-  participant remote repo
-  Note over home directory: archive current files
-  remote repo->>local repo: chezmoi init --apply  <repo>
-  Note left of local repo: prompt for configuration
-  local repo->>home directory: chezmoi init --apply  <repo>
-```
+## Structure
 
-### Prerequisites
-
-- [Bitwarden CLI](https://bitwarden.com/help/cli/)
-
-## Usage
-
-### Add and track a new file
-
-If you decide to extend the configuration of your dotfiles and include an additional file to be managed, here is an example on how to do that.
-
-```shell
-chezmoi add ~/.bashrc
-chezmoi edit ~/.bashrc
-chezmoi diff
-chezmoi apply -v
-chezmoi cd
-git add .
-git commit -S -m "Add .bashrc"
-exit
-```
-
-### Store changes in your own repository
-
-You may want to create a [new dotfiles repository](https://github.com/new) for then to add the remote origin to to your local copy and push the preferred changes. By doing so, it will give you better experience and more customisation options to extend the functionality making it your own.
-
-```shell
-git remote add origin https://github.com/$YOUR_GITHUB_USERNAME/dotfiles.git
-git branch -M main
-git push -u origin main
-```
-
-Usage flow diagram
-
-```mermaid
-sequenceDiagram
-  participant home directory
-  participant working copy
-  participant local repo
-  participant your remote repo
-  home directory->>local repo: chezmoi init
-  home directory->>working copy: chezmoi add <file>
-  working copy->>working copy: chezmoi edit <file>
-  working copy-->>home directory: chezmoi diff
-  working copy->>home directory: chezmoi apply
-  home directory-->>working copy: chezmoi cd
-  working copy->>local repo: git add
-  working copy->>local repo: git commit
-  local repo->>local repo: git remote add origin<br/>git branch
-  local repo->>your remote repo: git push
-  working copy-->>home directory: exit
-```
-
-## Architecture
-
-### Project structure
-
-The following files are managed by this dotilfes project
+As an example, the following files are managed by this dotilfes project:
 
 ```shell
 ~ ($HOME)
 │
+├─── .aliases
+├─── .bash_profile
+├─── .bash_prompt
+├─── .bashrc
+├─── .exports
+├─── .functions
 ├─── .gitattribute
 ├─── .gitconfig
-└─── .gitignore
+├─── .gitignore
+├─── .gitmessage
+├─── [.macos|.ubuntu]
+├─── .p10k.zsh
+├─── .path
+└─── .zshrc
 ```
 
 Some mechanisms like installation of packages do not follow the declarative approach and use imperative scripts to apply changes. However, they are written in an idempotent way and run only when a change is detected.
 
-### Project configuration
+This project can be customised and extended by creating a personal repository (a GitHub fork) for then to be keep building on top of it and making custom adjustments.
 
-This project can be customised and extended by creating a personal repository for then to be keep building on top of it.
+## Features
 
-## Contributing
-
-### Currently supported features
-
-- Cross-platform support for GitHub Codespaces, macOS, Ubutnu and Windows WSL
+- Cross-platform support for macOS, Windows WSL, Linux and GitHub Codespaces
 - File content templating for user customisation
 - [GNU-compatible CLI tools](https://en.wikipedia.org/wiki/List_of_GNU_packages) to provide consistent experience for macOS users
 - [Oh My Zsh](https://ohmyz.sh/) for managing shell configuration
+- [Visual Studio Code](https://code.visualstudio.com/) as a default editor
 - Git
   - Commit signing configuration
   - Essential `.gitconfig` setup
   - OS-specific `.gitignore` rules
   - Common `.gitattributes` rules
 
-### Resources
+## Usage
 
-More than a decade old [mathiasbynens/dotfiles](https://github.com/mathiasbynens/dotfiles) project is an inspiration and the main source of well established practices and features that have been borrowed for the purpose of improving Developer Experience in NHS England as an revamped version to fit into the organisation strategy.
+### Store changes in your own repository
+
+You may want to create your own fork of this dotfiles repository. Doing so will provide a better experience and more customisation options, extending the functionality and allowing you to personalise it. To incorporate changes from the original repository into your fork, you can use the following pattern:
+
+```shell
+# Prepare all the branches before rebasing
+git checkout upstream/main
+git pull
+git checkout main
+
+# Rebase your changes on top of `upstream/main`
+git rebase upstream/main
+# Resolve conflicts, if any
+
+# Find the base commit from `upstream/main` and reset to that commit but keep the changes
+git reset --soft $(git merge-base main upstream/main)
+
+# Stage, commit and push all changes
+git add .
+git commit -S -m "Custom changes"
+git push --force-with-lease
+```
+
+## Resources
+
+The longstanding [mathiasbynens/dotfiles](https://github.com/mathiasbynens/dotfiles) project, with its well-established practices and features, has served as an inspiration for improving the Developer Experience in NHS England. It has been adapted and revamped to align with the organisation's strategy.
 
 ## Contacts
 
