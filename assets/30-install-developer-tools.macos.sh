@@ -61,6 +61,7 @@ function install-tools-and-apps {
   brew $install \
     aws-vault \
     awscli \
+    azure-cli \
     bitwarden-cli \
     chezmoi \
     drawio \
