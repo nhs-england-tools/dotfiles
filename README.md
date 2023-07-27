@@ -1,6 +1,6 @@
-# Make Ops Tools - Dotfiles
+# NHS England Tools - Dotfiles
 
-[![CI/CD Pipeline](https://github.com/make-ops-tools/dotfiles/actions/workflows/cicd-pipeline.yaml/badge.svg)](https://github.com/make-ops-tools/dotfiles/actions/workflows/cicd-pipeline.yaml)
+[![CI/CD Pipeline](https://github.com/nhs-england-tools/dotfiles/actions/workflows/cicd-pipeline.yaml/badge.svg)](https://github.com/nhs-england-tools/dotfiles/actions/workflows/cicd-pipeline.yaml)
 
 Dotfiles are configuration files on `*NIX` (including macOS, Windows WSL and Linux) systems and are used to customise the behaviour and appearance of common applications, command-line tools and shell. They can contain various predefined settings, functions, aliases, environment variables and other configurations that affect how programs behave and interact with the system.
 
@@ -10,7 +10,7 @@ Here is an _[Unofficial guide to dotfiles on GitHub](https://dotfiles.github.io/
 
 ## Table of Contents
 
-- [Make Ops Tools - Dotfiles](#make-ops-tools---dotfiles)
+- [NHS England Tools - Dotfiles](#nhs-england-tools---dotfiles)
   - [Table of Contents](#table-of-contents)
   - [Installation](#installation)
     - [Archive your home directory](#archive-your-home-directory)
@@ -44,10 +44,10 @@ chezmoi archive --output=/tmp/dotfiles-backup.tar.gz
 
 ### Apply new configuration
 
-The following instruction clones the [dotfiles](https://github.com/make-ops-tools/dotfiles) repository into the `~/.local/share/chezmoi/` directory and next applies changes accordingly, to your home directory `~/`. During the setup it prompts you to provide configuration options like Git committer name and email address, etc.
+The following instruction clones the [dotfiles](https://github.com/nhs-england-tools/dotfiles) repository into the `~/.local/share/chezmoi/` directory and next applies changes accordingly, to your home directory `~/`. During the setup it prompts you to provide configuration options like Git committer name and email address, etc.
 
 ```shell
-bash -c "$(curl -fsLS get.chezmoi.io)" -- init --apply "make-ops-tools"
+bash -c "$(curl -fsLS get.chezmoi.io)" -- init --apply "nhs-england-tools"
 ```
 
 You can find more information on how `chezmoi` works [here](./docs/guides/chezmoi-usage.md).
