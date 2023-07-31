@@ -137,6 +137,8 @@ function tech-python-configure() {
 
   python -m ensurepip
   python -m pip install --upgrade pip
+  python -m pip install \
+    jwt
 
   # TODO: Install dev tools for python
   # brew $install \
