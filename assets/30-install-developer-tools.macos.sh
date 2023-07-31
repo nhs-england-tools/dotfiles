@@ -59,6 +59,7 @@ function install-tools-and-apps {
 
   # Install developer apps
   brew $install \
+    act \
     aws-vault \
     awscli \
     azure-cli \
