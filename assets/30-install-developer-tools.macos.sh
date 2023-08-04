@@ -78,6 +78,7 @@ function install-tools-and-apps {
     docker \
     firefox \
     font-hack-nerd-font \
+    github \
     google-chrome \
     ||:
 
