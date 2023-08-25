@@ -60,7 +60,6 @@ function install {
     readline \
     ripgrep \
     screen \
-    shellcheck \
     tmux \
     tree \
     watch \

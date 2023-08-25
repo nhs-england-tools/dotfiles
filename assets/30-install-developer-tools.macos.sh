@@ -67,9 +67,11 @@ function install-tools-and-apps {
     chezmoi \
     drawio \
     gh \
+    hadolint \
     iterm2 \
     kubernetes-cli \
     obsidian \
+    shellcheck \
     visual-studio-code \
     ||:
   brew $install --cask \
