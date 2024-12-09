@@ -126,8 +126,8 @@ function tech-terraform-configure() {
 function tech-python-install() {
 
   asdf plugin add python ||:
-  asdf install python latest
-  asdf global python latest
+  asdf install python 3.12.8 # TODO: Select the latest stable versino, e.g. 3.13.1t causes poetry fail to build
+  asdf global python 3.12.8
 }
 
 function tech-python-configure() {

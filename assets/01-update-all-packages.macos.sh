@@ -36,8 +36,6 @@ function install {
   # Upgrade Homebrew's packages
   brew upgrade ||:
   # Install Homebrew taps
-  brew tap homebrew/cask-versions # Install a tap to additional app versions for Homebrew Cask
-  brew tap homebrew/cask-fonts # Install a tap to additional font versions for Homebrew Cask
   brew tap blendle/blendle # Install a tap to apps and tools not yet submitted to Homebrew Core
   brew tap buo/cask-upgrade # Install a command-line tool for upgrading apps installed by Homebrew Cask
   # Upgrade all Homebrew Cask apps
