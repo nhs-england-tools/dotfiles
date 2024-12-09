@@ -59,6 +59,7 @@ function install-tools-and-apps {
 
   # Install developer apps
   brew $install \
+    act \
     aws-vault \
     awscli \
     azure-cli \
@@ -66,9 +67,11 @@ function install-tools-and-apps {
     chezmoi \
     drawio \
     gh \
+    hadolint \
     iterm2 \
     kubernetes-cli \
     obsidian \
+    shellcheck \
     visual-studio-code \
     ||:
   brew $install --cask \
@@ -77,6 +80,7 @@ function install-tools-and-apps {
     docker \
     firefox \
     font-hack-nerd-font \
+    github \
     google-chrome \
     ||:
 
@@ -136,6 +140,8 @@ function tech-python-configure() {
 
   python -m ensurepip
   python -m pip install --upgrade pip
+  python -m pip install \
+    jwt
 
   # TODO: Install dev tools for python
   # brew $install \
@@ -201,7 +207,7 @@ function tech-java-configure() {
 
 # ==============================================================================
 
-is-arg-true "$VERBOSE" && set -x
+is-arg-true "$VERBOSE" > /dev/null 2>&1 && set -x
 
 main $*
 

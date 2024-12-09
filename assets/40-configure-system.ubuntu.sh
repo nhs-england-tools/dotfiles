@@ -25,7 +25,7 @@ function configure {
 
 # ==============================================================================
 
-is-arg-true "$VERBOSE" && set -x
+is-arg-true "$VERBOSE" > /dev/null 2>&1 && set -x
 
 main $*
 

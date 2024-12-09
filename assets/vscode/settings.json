@@ -28,6 +28,9 @@
   "explorer.autoReveal": true,
   "explorer.sortOrder": "default",
   "extensions.ignoreRecommendations": true,
+  "files.associations": {
+    ".tool-versions": "plaintext"
+  },
   "files.autoSave": "onFocusChange",
   "files.eol": "\n",
   "files.insertFinalNewline": true,
