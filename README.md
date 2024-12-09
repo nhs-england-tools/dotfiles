@@ -104,8 +104,9 @@ You may want to create your own fork of this dotfiles repository. Doing so will 
 
 ```shell
 # Prepare all the branches before rebasing
-git checkout upstream/main
-git pull
+git remote add upstream https://github.com/nhs-england-tools/dotfiles.git
+git remote -v
+git fetch upstream
 git checkout main
 
 # Rebase your changes on top of `upstream/main`
