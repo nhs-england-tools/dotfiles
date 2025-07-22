@@ -356,17 +356,17 @@ Comprehensive guides are available for various aspects of this dotfiles setup:
 
 1. **GPG signing issues**
 
-   ```shell
-   # Verify GPG key setup
-   gpg --list-secret-keys --keyid-format LONG
-   ```
+    ```shell
+    # Verify GPG key setup
+    gpg --list-secret-keys --keyid-format LONG
+    ```
 
 2. **Zsh configuration problems**
 
-   ```shell
-   # Reset Zsh configuration
-   chezmoi apply ~/.zshrc
-   ```
+    ```shell
+    # Reset Zsh configuration
+    chezmoi apply ~/.zshrc
+    ```
 
 ### ❓ FAQ
 
