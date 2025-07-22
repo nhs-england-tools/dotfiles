@@ -108,7 +108,6 @@ Depending on your OS and terminal settings, you may be prompted to grant access 
 
 Backups may include sensitive files. Ensure you store them securely if transferring between machines.
 
-
 ```shell
 chezmoi archive --output=/tmp/dotfiles-backup.tar.gz
 ```
