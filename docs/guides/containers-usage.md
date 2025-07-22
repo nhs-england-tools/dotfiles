@@ -1,6 +1,6 @@
-# Docker Usage
+# Containers Usage
 
-- [Docker Usage](#docker-usage)
+- [Containers Usage](#containers-usage)
   - [TODO: Create documentation](#todo-create-documentation)
 
 ## TODO: Create documentation
