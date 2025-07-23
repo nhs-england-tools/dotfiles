@@ -233,24 +233,28 @@ To maintain your own customisations while regularly synchronising with upstream 
 # Clone your fork of the dotfiles repository
 git clone git@github.com:<your-username>/dotfiles.git
 cd dotfiles
-
-# Add the official NHS upstream repository
-git remote add upstream https://github.com/nhs-england-tools/dotfiles.git
+git checkout main
 
 # Create and switch to your custom branch
 git checkout -b custom
+git push
 
 # Apply your changes on this branch
 
+# Add the official NHS upstream repository
+git remote add upstream https://github.com/nhs-england-tools/dotfiles.git
+git remote -v
+
 # Periodically update your fork with upstream changes
 git checkout main
-git fetch upstream
+it fetch upstream
 git merge upstream/main
 git push
 
 # Rebase your custom branch onto the updated main branch
 git checkout custom
 git rebase main
+git push --force-with-lease
 ```
 
 This method preserves a clean history, keeps your changes separate, and makes future updates straightforward.
