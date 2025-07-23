@@ -235,51 +235,70 @@ git clone git@github.com:<your-username>/dotfiles.git
 cd dotfiles
 git checkout main
 
-# Create and switch to your custom branch
-git checkout -b custom
-git push
+# Create and switch to your persistent custom branch, if it doesn't exist yet
+git checkout custom || git checkout -b custom
 
-# Apply your changes on this branch
+# For each set of changes, create a feature branch from custom
+git checkout -b your-custom-branch
+# Make your custom changes ...
+git add .
+git commit -S -m "Short, descriptive summary of your custom changes"
+git push origin your-custom-branch
 
-# Add the official NHS upstream repository
-git remote add upstream https://github.com/nhs-england-tools/dotfiles.git
-git remote -v
+# Open a pull request on GitHub and merge your feature branch into custom ...
 
-# Periodically update your fork with upstream changes
+# After merging on GitHub, clean up local and remote feature branches
+git checkout custom
+git pull origin custom
+git branch -d your-custom-branch
+git push origin --delete your-custom-branch
+
+# Periodically update your fork with the latest changes from upstream
 git checkout main
-it fetch upstream
+git fetch upstream
 git merge upstream/main
-git push
+git push origin main
 
 # Rebase your custom branch onto the updated main branch
 git checkout custom
 git rebase main
-git push --force-with-lease
+git push origin custom --force-with-lease
+
+# (Optional) Squash your custom branch to a single commit
+git checkout custom
+git reset --soft $(git merge-base custom main)
+git add .
+git commit -S -m "Squashed: All custom changes up to <date/description>"
+git push origin custom --force-with-lease
 ```
 
 This method preserves a clean history, keeps your changes separate, and makes future updates straightforward.
-If you prefer to keep all your changes on `main`, be aware this requires more careful conflict resolution and is not recommended for most users.
+
+While it is possible to keep all your changes on the `main` branch, doing so means you will need to manually resolve any conflicts each time you pull updates from the original repository. This can become complicated, especially as more changes are made both locally and upstream. For most users, using a dedicated `custom` branch is simpler, safer, and helps avoid these issues.
 
 ### 📤 Raise a Pull Request Back to the Upstream Repository
 
 To contribute improvements, features, or fixes to the upstream repository, follow the standard GitHub workflow:
 
 ```shell
-# Ensure you're up to date with upstream
+# Ensure your local repository has the latest changes from upstream
 git fetch upstream
 git checkout upstream/main
 
-# Create a new feature branch based on upstream/main
-git checkout -b your-branch-name
+# Create a new feature branch based on the latest upstream/main
+git checkout -b your-contribution-branch
 
-# Make and commit your changes
+# Make your changes ..., then stage and sign your commit
 git add .
-git commit -S -m "Descriptive summary of your changes"
+git commit -S -m "Short, descriptive summary of your contribution"
 
-# Push your branch to your fork
-git push origin your-branch-name
+# Push your contribution branch to your fork on GitHub
+git push origin your-contribution-branch
 
-# Then open a pull request on GitHub from your fork to the upstream repository
+# Open a pull request on GitHub ...
+# - Set your fork and feature branch as the source
+# - Set the upstream repository and its main branch as the target
+# - Add a clear title and description for reviewers
 ```
 
 Your contribution will be reviewed by maintainers and, if accepted, merged into the official repository for others to benefit from.
