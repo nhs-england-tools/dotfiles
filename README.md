@@ -29,6 +29,7 @@ Refer to the _[Unofficial guide to dotfiles on GitHub](https://dotfiles.github.i
     - [🔑 Set Up a Password Manager](#-set-up-a-password-manager)
     - [🔁 Re-run the Setup Locally](#-re-run-the-setup-locally)
   - [📁 Structure](#-structure)
+    - [Example: Downstream Fork](#example-downstream-fork)
   - [✨ Features](#-features)
     - [🐚 Shell Environment](#-shell-environment)
     - [💻 Development Tools](#-development-tools)
@@ -185,6 +186,10 @@ Some changes use imperative (non-declarative) scripts, written to be idempotent 
 
 You can fork this project to customise it for your own environment and workflow.
 
+### Example: Downstream Fork
+
+For a practical example of how this repository can be forked and customised, see [stefaniuk/dotfiles](https://github.com/stefaniuk/dotfiles/), which is a downstream fork maintained and configured by the author. This example demonstrates how to adapt the NHS dotfiles for personal use, apply local preferences, and keep in sync with upstream changes.
+
 ## ✨ Features
 
 ### 🐚 Shell Environment
@@ -250,7 +255,7 @@ git push origin your-custom-branch
 # After merging on GitHub, clean up local and remote feature branches
 git checkout custom
 git pull origin custom
-git branch -d your-custom-branch
+git branch -D your-custom-branch
 git push origin --delete your-custom-branch
 
 # Periodically update your fork with the latest changes from upstream
