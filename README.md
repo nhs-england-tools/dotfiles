@@ -268,7 +268,7 @@ git push origin custom --force-with-lease
 git checkout custom
 git reset --soft $(git merge-base custom main)
 git add .
-git commit -S -m "Squashed: All custom changes up to <date/description>"
+git commit -S -m "Squashed: All custom changes up to $(date +"%A, %d %B %Y, %H:%M:%S %Z")"
 git push origin custom --force-with-lease
 ```
 
