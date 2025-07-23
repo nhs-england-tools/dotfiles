@@ -299,6 +299,13 @@ git push origin your-contribution-branch
 # - Set your fork and feature branch as the source
 # - Set the upstream repository and its main branch as the target
 # - Add a clear title and description for reviewers
+
+# After your pull request is merged on GitHub, you can safely delete the local branch
+git checkout main
+git pull origin main
+git branch -D your-contribution-branch
+
+# Next, follow the "Keep Your Repository Up to Date" section to update your branches with any new upstream changes
 ```
 
 Your contribution will be reviewed by maintainers and, if accepted, merged into the official repository for others to benefit from.
