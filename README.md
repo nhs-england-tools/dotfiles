@@ -35,8 +35,7 @@ Refer to the _[Unofficial guide to dotfiles on GitHub](https://dotfiles.github.i
     - [🔒 Security](#-security)
     - [🖥️ Cross-Platform Support](#️-cross-platform-support)
   - [💡 Usage](#-usage)
-    - [🔄 Keep Your Repository Up to Date with a Dedicated Branch](#-keep-your-repository-up-to-date-with-a-dedicated-branch)
-    - [🧬 Store Your Customisations in the Same Branch](#-store-your-customisations-in-the-same-branch)
+    - [🧬 Keep Your Repository Up to Date](#-keep-your-repository-up-to-date)
     - [📤 Raise a Pull Request Back to the Upstream Repository](#-raise-a-pull-request-back-to-the-upstream-repository)
   - [🧰 Configuration](#-configuration)
     - [🔧 Template Variables](#-template-variables)
@@ -47,7 +46,6 @@ Refer to the _[Unofficial guide to dotfiles on GitHub](https://dotfiles.github.i
     - [🖥️ Platform Guides](#️-platform-guides)
   - [🛠 Troubleshooting](#-troubleshooting)
     - [🚨 Common Issues](#-common-issues)
-    - [❓ FAQ](#-faq)
   - [📎 Resources](#-resources)
   - [🤝 Contributing](#-contributing)
   - [📬 Contacts](#-contacts)
@@ -69,7 +67,7 @@ This project is for NHS engineers, digital teams, and contributors who want a fa
 ## 🚀 Quick Start
 
 ```shell
-# Install chezmoi and apply NHS dotfiles
+# Install chezmoi and apply NHS dotfiles in one step
 bash -c "$(curl -fsLS get.chezmoi.io)" -- init --apply "nhs-england-tools"
 ```
 
@@ -227,65 +225,36 @@ You can fork this project to customise it for your own environment and workflow.
 
 ## 💡 Usage
 
-### 🔄 Keep Your Repository Up to Date with a Dedicated Branch
+### 🧬 Keep Your Repository Up to Date
 
-To maintain your own customisations while regularly synchronising with upstream updates, it’s recommended to create a separate branch, commonly called `custom` and set it as your default. This avoids rebasing directly onto `main` and helps preserve a clean update history.
+To maintain your own customisations while regularly synchronising with upstream updates, it’s recommended to create a separate branch, commonly called `custom`. This approach keeps your local changes isolated from the main branch, makes updates easier to manage, and helps you avoid conflicts.
 
 ```shell
-# Clone your fork
+# Clone your fork of the dotfiles repository
 git clone git@github.com:<your-username>/dotfiles.git
 cd dotfiles
 
-# Add the upstream repository
+# Add the official NHS upstream repository
 git remote add upstream https://github.com/nhs-england-tools/dotfiles.git
 
-# Create and switch to a custom branch
+# Create and switch to your custom branch
 git checkout -b custom
 
 # Apply your changes on this branch
 
-# Periodically fetch and merge updates from upstream
+# Periodically update your fork with upstream changes
 git checkout main
 git fetch upstream
 git merge upstream/main
 git push
 
-# Rebase your custom branch onto the updated main
+# Rebase your custom branch onto the updated main branch
 git checkout custom
 git rebase main
 ```
 
-This method keeps your changes isolated from `main` and makes future updates easier to manage.
-
-### 🧬 Store Your Customisations in the Same Branch
-
-This method is useful if you want to keep all your changes on `main`, perhaps to simplify deployment or automation. However, it requires care when synchronising, as updates from upstream may conflict with your local changes.
-
-```shell
-# Add the upstream repository if not already added
-git remote add upstream https://github.com/nhs-england-tools/dotfiles.git
-
-# Fetch the latest changes from upstream
-git fetch upstream
-
-# Switch to your main branch
-git checkout main
-
-# Rebase your changes on top of the latest upstream/main
-git rebase upstream/main
-
-# Reset to the common ancestor, keeping your changes staged
-git reset --soft $(git merge-base main upstream/main)
-
-# Commit your local changes
-git add .
-git commit -S -m "Custom changes"
-
-# Force push to your fork
-git push --force-with-lease
-```
-
-This method is more advanced and may require conflict resolution if changes in the upstream project overlap with your own.
+This method preserves a clean history, keeps your changes separate, and makes future updates straightforward.
+If you prefer to keep all your changes on `main`, be aware this requires more careful conflict resolution and is not recommended for most users.
 
 ### 📤 Raise a Pull Request Back to the Upstream Repository
 
@@ -366,14 +335,6 @@ Comprehensive guides are available for various aspects of this dotfiles setup:
     # Reset Zsh configuration
     chezmoi apply ~/.zshrc
     ```
-
-### ❓ FAQ
-
-**Q: How do I update my dotfiles?**
-A: Run `chezmoi update` to pull and apply the latest changes.
-
-**Q: How do I add custom configurations?**
-A: Create a `.custom` file in your home directory for machine-specific settings.
 
 ## 📎 Resources
 
