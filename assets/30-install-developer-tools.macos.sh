@@ -103,7 +103,7 @@ function tech-terraform-install() {
 
   asdf plugin add terraform ||:
   asdf install terraform latest
-  asdf global terraform latest
+  asdf set terraform latest --home
 }
 
 function tech-terraform-configure() {
@@ -120,21 +120,21 @@ function tech-python-install() {
 
   asdf plugin add python ||:
   asdf install python latest
-  asdf global python latest
+  asdf set python latest --home
 }
 
 function tech-python-configure() {
 
-  # SEE: https://github.com/asdf-community/asdf-python
+  :
 
-  asdf plugin add poetry ||:
-  asdf install poetry latest
-  asdf global poetry latest
+  # asdf plugin add poetry ||:
+  # asdf install poetry latest
+  # asdf set poetry latest --home
 
-  python -m ensurepip
-  python -m pip install --upgrade pip
-  python -m pip install \
-    jwt
+  # python -m ensurepip
+  # python -m pip install --upgrade pip
+  # python -m pip install \
+  #   jwt
 
   # TODO: Install dev tools for python
   # brew $install \
@@ -161,21 +161,21 @@ function tech-nodejs-install() {
 
   asdf plugin add nodejs ||:
   asdf install nodejs latest
-  asdf global nodejs latest
+  asdf set nodejs latest --home
 }
 
 function tech-nodejs-configure() {
 
   asdf plugin add yarn ||:
   asdf install yarn latest
-  asdf global yarn latest
+  asdf set yarn latest --home
 }
 
 function tech-golang-install() {
 
   asdf plugin add golang ||:
   asdf install golang latest
-  asdf global golang latest
+  asdf set golang latest --home
 }
 
 function tech-golang-configure() {
@@ -189,7 +189,7 @@ function tech-java-install() {
 
   asdf plugin add java ||:
   asdf install java latest:adoptopenjdk
-  asdf global java latest:adoptopenjdk
+  asdf set java latest:adoptopenjdk --home
 }
 
 function tech-java-configure() {

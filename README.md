@@ -133,7 +133,7 @@ To store some of the configuration options, `chezmoi` can use a password manager
 Here’s a complete instruction set to re-apply your dotfiles manually after the initial installation using chezmoi:
 
 ```shell
-# Navigate to your chezmoi working directory (optional, for context)
+# Navigate to your chezmoi working directory
 cd ~/.local/share/chezmoi
 
 # Pull the latest changes from your dotfiles source repo
@@ -141,6 +141,9 @@ chezmoi update
 
 # Or, re-apply everything from your local configuration
 chezmoi apply
+
+# To update the dotfiles from your fork from the current directory (not ~/.local/share/chezmoi), you can use
+chezmoi apply --source .
 ```
 
 If you’ve made changes to your `chezmoi.toml` or templates, or switched branches, you can also re-initialise:
