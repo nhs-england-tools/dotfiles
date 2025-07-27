@@ -1,6 +1,7 @@
 {{- $name := "" -}}
 {{- $email := "" -}}
 {{- $signingKey := "" -}}
+
 {{- if lookPath "bw" -}}
 {{-   $dotfiles := (bitwarden "item" "dotfiles") -}}
 {{-   $name = (print $dotfiles.identity.firstName " " $dotfiles.identity.lastName) -}}
