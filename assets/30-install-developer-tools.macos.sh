@@ -60,6 +60,7 @@ function install-tools-and-apps {
   # Install developer apps
   brew $install \
     act \
+    asdf \
     aws-vault \
     awscli \
     azure-cli \
@@ -84,6 +85,9 @@ function install-tools-and-apps {
     google-chrome \
     ||:
 
+  # Update asdf plugins
+  asdf plugin update --all
+
   # Install vscode extensions
   is-arg-true "$REINSTALL" && vs_ext_force="--force" || vs_ext_force=""
   for file in $(cat "${CHEZMOI_SOURCE_DIR:-$(chezmoi source-path)}/.vscode/extensions.json" | jq '.recommendations[]' --raw-output); do
@@ -93,17 +97,6 @@ function install-tools-and-apps {
   defaults import \
     com.googlecode.iterm2 \
     "${CHEZMOI_SOURCE_DIR:-$(chezmoi source-path)}/assets/iterm2/settings.xml"
-
-  # Install asdf, SEE: https://asdf-vm.com/
-  if [ -d "$HOME/.asdf" ]; then
-    (
-      cd "$HOME/.asdf"
-      git pull
-    )
-  else
-    git clone --depth=1 https://github.com/asdf-vm/asdf.git "$HOME/.asdf" ||:
-  fi
-  asdf plugin update --all
 }
 
 function tech-terraform-install() {
@@ -126,8 +119,8 @@ function tech-terraform-configure() {
 function tech-python-install() {
 
   asdf plugin add python ||:
-  asdf install python 3.12.8 # TODO: Select the latest stable versino, e.g. 3.13.1t causes poetry fail to build
-  asdf global python 3.12.8
+  asdf install python latest
+  asdf global python latest
 }
 
 function tech-python-configure() {

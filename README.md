@@ -125,6 +125,9 @@ For detailed information about `chezmoi` configuration and usage, see the [Chezm
 
 To store some of the configuration options, `chezmoi` can use a password manager. Therefore, after the dotfiles installation, please follow the [Bitwarden setup](./docs/guides/bitwarden-usage.md) guide to improve the installation experience for any subsequent run.
 
+> [!NOTE]
+> If the Bitwarden CLI is available on your system (this will happen after the first installation of the dotfiles), any subsequent run will use the Bitwarden CLI for password management and prompt you for your Bitwarden password.
+
 ### 🔁 Re-run the Setup Locally
 
 Here’s a complete instruction set to re-apply your dotfiles manually after the initial installation using chezmoi:
