@@ -264,7 +264,7 @@ git push origin --delete your-custom-branch
 # Periodically update your fork with the latest changes from upstream
 git checkout main
 git fetch upstream
-git merge upstream/main
+git merge upstream main
 git push origin main
 
 # Rebase your custom branch onto the updated main branch
