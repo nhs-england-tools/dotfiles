@@ -70,8 +70,12 @@ function install-tools-and-apps {
     gh \
     hadolint \
     iterm2 \
+    just \
     kubernetes-cli \
     obsidian \
+    ollama \
+    podman \
+    podman-desktop \
     shellcheck \
     visual-studio-code \
     ||:
@@ -125,36 +129,10 @@ function tech-python-install() {
 
 function tech-python-configure() {
 
-  :
-
-  # asdf plugin add poetry ||:
-  # asdf install poetry latest
-  # asdf set poetry latest --home
-
-  # python -m ensurepip
-  # python -m pip install --upgrade pip
-  # python -m pip install \
-  #   jwt
-
-  # TODO: Install dev tools for python
-  # brew $install \
-  #   pyenv \
-  #   pyenv-virtualenv \
-  #   python \
-  #   virtualenv \
-  #   ||:
-  # python -m pip install \
-  #   bandit \
-  #   black \
-  #   bpython \
-  #   coverage \
-  #   flake8 \
-  #   mypy \
-  #   prospector \
-  #   pycodestyle \
-  #   pylama \
-  #   pylint \
-  #   pytest
+  brew $install \
+    ruff \
+    uv \
+    ||:
 }
 
 function tech-nodejs-install() {
